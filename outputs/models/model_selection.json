@@ -1,0 +1,96 @@
+{
+  "value": {
+    "chosen": "linear",
+    "spec": {
+      "family": "linear",
+      "kind": "regression",
+      "use_spread": true,
+      "params": {
+        "penalty": 10.0
+      }
+    },
+    "boosted_relative_gain": {
+      "metric": "mae",
+      "estimate": 0.004373324173060467,
+      "ci95": [
+        0.0031277262198650124,
+        0.005610748584671588
+      ]
+    },
+    "beats_naive": true,
+    "only_marginal": false,
+    "group_bias_reduction": 0.6147568389748435
+  },
+  "explosive": {
+    "chosen": "linear",
+    "spec": {
+      "family": "linear",
+      "kind": "classification",
+      "use_spread": true,
+      "params": {
+        "penalty": 1.0
+      }
+    },
+    "boosted_relative_gain": {
+      "metric": "brier",
+      "estimate": 0.0028013583500237083,
+      "ci95": [
+        0.0019627296635877922,
+        0.003604354626959849
+      ]
+    },
+    "beats_naive": true,
+    "only_marginal": false,
+    "group_bias_reduction": 0.8480651340094787,
+    "calibrated": true
+  },
+  "explosive_alt": {
+    "chosen": "linear",
+    "spec": {
+      "family": "linear",
+      "kind": "classification",
+      "use_spread": true,
+      "params": {
+        "penalty": 1.0
+      }
+    }
+  },
+  "boosted_check_specs": {
+    "value": {
+      "family": "boosted",
+      "kind": "regression",
+      "use_spread": true,
+      "params": {
+        "max_depth": 6,
+        "min_child_weight": 500,
+        "n_estimators": 144
+      }
+    },
+    "explosive": {
+      "family": "boosted",
+      "kind": "classification",
+      "use_spread": true,
+      "params": {
+        "max_depth": 4,
+        "min_child_weight": 30,
+        "n_estimators": 134
+      }
+    }
+  },
+  "environment_corrections": {
+    "final": {
+      "value": 0.0,
+      "explosive": 0.0,
+      "explosive_alt": 0.0
+    },
+    "sensitivity": {
+      "value": 0.0,
+      "explosive": 0.0,
+      "explosive_alt": 0.0
+    },
+    "boosted_final": {
+      "value": 0.0,
+      "explosive": 0.0
+    }
+  }
+}

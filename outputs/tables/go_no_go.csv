@@ -1,0 +1,10 @@
+item,description,result,detail
+gate 1,Four 2026 games present and reconciled,True,"scores match official records; plays, pass attempts, interceptions within 1"
+gate 2,Both models beat the naive baseline on 2025,True,value: True (marginal False); explosive: True (marginal False)
+gate 3,Explosive model reasonably calibrated on 2025,True,observed/expected 0.95-1.05 and slope 0.85-1.15
+gate 4,At least two robust eligible findings,True,"3 found: pass on passing downs (value, edge -); pass on passing downs (explosive, edge -); run on standard downs (value, edge -)"
+gate 5,Overall run and pass conclusions stable under garbage-time and giveaway checks,True,
+no-claims trigger,A model fails to beat naive at all,False,
+no-claims trigger,Strongest favorable finding driven by one play,True,"strongest favorable finding: run on passing downs, value"
+no-claims trigger,No favorable finding meets the display threshold,False,
+decision,NO MATCHUP CLAIMS BEFORE THE GAME,,

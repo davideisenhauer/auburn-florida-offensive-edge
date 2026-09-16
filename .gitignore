@@ -1,0 +1,23 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data: raw snapshots are re-downloadable and verified by hash in data_manifest.csv
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+!data/data_manifest.csv
+
+# OS and editor
+.DS_Store
+.vscode/
+.idea/

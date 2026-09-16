@@ -1,0 +1,11 @@
+model,target,plays,games,statistic,estimate,ci_low,ci_high,triggered,correction,correction_type
+final,value,22640,181,mean residual,-0.015881304701217278,-0.03402256522163375,0.0030593897439090433,False,0.0,additive constant
+final,explosive,22640,181,observed / expected,0.9423461357576675,0.8954985919622503,0.9886004967273145,False,0.0,logit offset
+final,explosive_alt,22640,181,observed / expected,0.9589864688377651,0.9280246106067371,0.9888157330545372,False,0.0,logit offset
+sensitivity,value,22640,181,mean residual,-0.013424908418008141,-0.03144723168339595,0.005481570814370172,False,0.0,additive constant
+sensitivity,explosive,22640,181,observed / expected,0.9453894023515769,0.8986627450994379,0.9909456452989625,False,0.0,logit offset
+sensitivity,explosive_alt,22640,181,observed / expected,0.9612890287096596,0.9304416284118915,0.9915833218735379,False,0.0,logit offset
+boosted_final,value,22640,181,mean residual,-0.02060069228823451,-0.03937265519610478,-0.0010187968996651566,False,0.0,additive constant
+boosted_final,explosive,22640,181,observed / expected,0.9274607881689648,0.8814252346999576,0.9719215275494819,False,0.0,logit offset
+2025 Weeks 1-2 benchmark (2021-2024 model),value,22883,179,mean residual,-0.02589979294511641,-0.04460766651037478,-0.005991705795770933,,,additive constant
+2025 Weeks 1-2 benchmark (2021-2024 model),explosive,22883,179,observed / expected,0.9489181399074259,0.8952346204187988,1.0032767869392918,,,logit offset

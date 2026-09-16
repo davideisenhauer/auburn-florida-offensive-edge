@@ -1,0 +1,19 @@
+play_family,down_group,metric,axis,units,auburn_plays,florida_plays,marker_plays,auburn_shrunk,florida_shrunk,edge,edge_low_90,edge_high_90,plotted_edge,plotted_low_90,plotted_high_90,checks_failed,failed_checks,label,robust,interval_style,point_label,influential_play
+pass,standard downs,value,x,PPA per play,40,40,80,-0.0062782681673604,-0.0031587286866098,-0.0047184984269851,-0.0182842649663389,0.0091256407921764,-0.0047184984269851,-0.0182842649663389,0.0091256407921764,2,"4, 6",no clear signal,False,fails a check or limited sample,"Passes, standard downs
+40 Auburn / 40 Florida plays",Auburn offense: (07:20) No Huddle-Shotgun #17 B.Brown pass intercepted by #22 R.Bush II at BAY04 #22 R.Bush II return for loss
+pass,standard downs,explosive,y,percentage points of explosive-play rate,40,40,80,-0.0001063713189818,-0.0004801238970732,-0.0002932476080275,-0.00379665263821,0.0036194756148673,-0.02932476080275,-0.37966526382099997,0.36194756148673,3,"4, 5, 6",no clear signal,False,fails a check or limited sample,"Passes, standard downs
+40 Auburn / 40 Florida plays",Auburn offense: (05:03) No Huddle-Shotgun #17 B.Brown pass incomplete short right to #11 K.Singleton thrown to USM35
+pass,passing downs,value,x,PPA per play,25,21,46,-0.0239750255932579,-0.0014456809062743,-0.0127103532497661,-0.0281895060108627,0.004175864485812,-0.0127103532497661,-0.0281895060108627,0.004175864485812,0,,no clear signal,True,holds under every check,"Passes, passing downs
+25 Auburn / 21 Florida plays",Auburn offense: (00:13) No Huddle-Shotgun #17 B.Brown pass intercepted by #7 D.Jordan at BAY11 broken up by #59 D.Tezino #7 D.
+pass,passing downs,explosive,y,percentage points of explosive-play rate,25,21,46,-0.004861194521969,-0.0001929896754316,-0.0025270920987003,-0.0043173516112812,-8.709376825693263e-05,-0.25270920987003,-0.43173516112812,-0.008709376825693263,0,,no clear signal,True,holds under every check,"Passes, passing downs
+25 Auburn / 21 Florida plays",Auburn offense: (01:48) No Huddle-Shotgun #17 B.Brown pass incomplete deep left to #4 J.Koger thrown to USM00. The previous pl
+run,standard downs,value,x,PPA per play,54,21,75,-0.0228990818671778,0.0021319117963142,-0.0103835850354318,-0.0281368265982978,0.0059060371415429,-0.0103835850354318,-0.0281368265982978,0.0059060371415429,0,,no clear signal,True,holds under every check,"Runs, standard downs
+54 Auburn / 21 Florida plays",Auburn offense: (04:11) No Huddle-Shotgun #23 J.Cobb rush middle for 19 yards gain to the USM04 fumbled by #23 J.Cobb at USM14
+run,standard downs,explosive,y,percentage points of explosive-play rate,54,21,75,-0.0009734839404074,-0.0005786931202659,-0.0007760885303366,-0.001983874161862,0.000589453472408,-0.07760885303366,-0.1983874161862,0.05894534724079999,1,6,no clear signal,False,fails a check or limited sample,"Runs, standard downs
+54 Auburn / 21 Florida plays",Auburn offense: (02:42) No Huddle-Shotgun #29 O.Mabson II rush middle for 6 yards gain to the USM27 (#6 A.Martin)
+run,passing downs,value,x,PPA per play,15,13,28,-0.0064726377223906,0.0088043345675134,0.0011658484225613,-0.0200751508679112,0.0232341386315193,0.0011658484225613,-0.0200751508679112,0.0232341386315193,3,"6, 7, 10",no clear signal,False,fails a check or limited sample,"Runs, passing downs
+15 Auburn / 13 Florida plays
+limited sample","Auburn offense: (05:00) No Huddle-Shotgun #17 B.Brown rush middle for 12 yards gain to the USM47 (#35 W.Edison), 1ST DOWN"
+run,passing downs,explosive,y,percentage points of explosive-play rate,15,13,28,0.0005424976641759,-0.0010601359827716,-0.0002588191592978,-0.0019311173693965,0.0026936259645169,-0.02588191592978,-0.19311173693965,0.26936259645169003,2,"2, 6",no clear signal,False,fails a check or limited sample,"Runs, passing downs
+15 Auburn / 13 Florida plays
+limited sample","Auburn offense: (04:37) No Huddle-Shotgun #17 B.Brown rush right for 7 yards gain to the USM23 (#24 M.Robinson III), 1ST DOWN"

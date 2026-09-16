@@ -1,0 +1,105 @@
+play_family,down_group,metric,check,name,edge,primary_edge,kept_direction,note
+pass,standard downs,value,1,2023-2025 sensitivity baseline,-0.004558552328793503,-0.004718498426985147,True,
+pass,standard downs,value,2,garbage time included,-0.0027460701226987992,-0.004718498426985147,True,
+pass,standard downs,value,3,accepted-penalty snaps included,-0.0040197717675051646,-0.004718498426985147,True,
+pass,standard downs,value,4,giveaways removed,0.000755201349840879,-0.004718498426985147,False,
+pass,standard downs,value,5,alternate explosive definition,,-0.004718498426985147,,not applicable to PPA
+pass,standard downs,value,6,without Baylor at Auburn,0.0014163550698681943,-0.004718498426985147,False,
+pass,standard downs,value,6,without Southern Miss at Auburn,-0.0077855490161000546,-0.004718498426985147,True,
+pass,standard downs,value,6,without Florida Atlantic at Florida,-0.0025779810365350437,-0.004718498426985147,True,
+pass,standard downs,value,6,without Campbell at Florida,-0.005288006544130043,-0.004718498426985147,True,
+pass,standard downs,value,7,most influential play removed,-0.002029266459795983,-0.004718498426985147,True,Auburn offense: (07:20) No Huddle-Shotgun #17 B.Brown pass intercepted by #22 R.Bush II at BAY04 #22 R.Bush II return for loss
+pass,standard downs,value,8,environment correction removed,,-0.004718498426985147,,not applicable: no correction was triggered
+pass,standard downs,value,9,display threshold,,-0.004718498426985147,True,40 and 40 plays
+pass,standard downs,value,10,boosted baseline,-0.0001942370262924527,-0.004718498426985147,True,
+pass,standard downs,explosive,1,2023-2025 sensitivity baseline,-0.0002648216673596397,-0.00029324760802754184,True,
+pass,standard downs,explosive,2,garbage time included,-0.0009983182762359102,-0.00029324760802754184,True,
+pass,standard downs,explosive,3,accepted-penalty snaps included,,-0.00029324760802754184,,not applicable: yardage unreliable
+pass,standard downs,explosive,4,giveaways removed,6.067769125237438e-06,-0.00029324760802754184,False,
+pass,standard downs,explosive,5,alternate explosive definition,0.00015989422129530266,-0.00029324760802754184,False,
+pass,standard downs,explosive,6,without Baylor at Auburn,-0.0006100220251802132,-0.00029324760802754184,True,
+pass,standard downs,explosive,6,without Southern Miss at Auburn,7.006130895159711e-05,-0.00029324760802754184,False,
+pass,standard downs,explosive,6,without Florida Atlantic at Florida,0.0005979163242778405,-0.00029324760802754184,False,
+pass,standard downs,explosive,6,without Campbell at Florida,-0.0009360066979080252,-0.00029324760802754184,True,
+pass,standard downs,explosive,7,most influential play removed,-5.9400711714664126e-05,-0.00029324760802754184,True,Auburn offense: (05:03) No Huddle-Shotgun #17 B.Brown pass incomplete short right to #11 K.Singleton thrown to USM35
+pass,standard downs,explosive,8,environment correction removed,,-0.00029324760802754184,,not applicable: no correction was triggered
+pass,standard downs,explosive,9,display threshold,,-0.00029324760802754184,True,40 and 40 plays
+pass,standard downs,explosive,10,boosted baseline,-0.0007996274342539414,-0.00029324760802754184,True,
+pass,passing downs,value,1,2023-2025 sensitivity baseline,-0.012761699333744918,-0.012710353249766139,True,
+pass,passing downs,value,2,garbage time included,-0.013188551938474461,-0.012710353249766139,True,
+pass,passing downs,value,3,accepted-penalty snaps included,-0.012710353249766139,-0.012710353249766139,True,
+pass,passing downs,value,4,giveaways removed,-0.008368092811232356,-0.012710353249766139,True,
+pass,passing downs,value,5,alternate explosive definition,,-0.012710353249766139,,not applicable to PPA
+pass,passing downs,value,6,without Baylor at Auburn,-0.012890956056731968,-0.012710353249766139,True,
+pass,passing downs,value,6,without Southern Miss at Auburn,-0.0011904528771504732,-0.012710353249766139,True,
+pass,passing downs,value,6,without Florida Atlantic at Florida,-0.01352415375656724,-0.012710353249766139,True,
+pass,passing downs,value,6,without Campbell at Florida,-0.011180435770557143,-0.012710353249766139,True,
+pass,passing downs,value,7,most influential play removed,-0.00960501026177521,-0.012710353249766139,True,Auburn offense: (00:13) No Huddle-Shotgun #17 B.Brown pass intercepted by #7 D.Jordan at BAY11 broken up by #59 D.Tezino #7 D.
+pass,passing downs,value,8,environment correction removed,,-0.012710353249766139,,not applicable: no correction was triggered
+pass,passing downs,value,9,display threshold,,-0.012710353249766139,True,25 and 21 plays
+pass,passing downs,value,10,boosted baseline,-0.014652257210313376,-0.012710353249766139,True,
+pass,passing downs,explosive,1,2023-2025 sensitivity baseline,-0.002503060188971982,-0.002527092098700363,True,
+pass,passing downs,explosive,2,garbage time included,-0.001957626189511648,-0.002527092098700363,True,
+pass,passing downs,explosive,3,accepted-penalty snaps included,,-0.002527092098700363,,not applicable: yardage unreliable
+pass,passing downs,explosive,4,giveaways removed,-0.002338350510286741,-0.002527092098700363,True,
+pass,passing downs,explosive,5,alternate explosive definition,-0.002894710778882804,-0.002527092098700363,True,
+pass,passing downs,explosive,6,without Baylor at Auburn,-0.0016740645185565996,-0.002527092098700363,True,
+pass,passing downs,explosive,6,without Southern Miss at Auburn,-0.0010335321236444668,-0.002527092098700363,True,
+pass,passing downs,explosive,6,without Florida Atlantic at Florida,-0.002701705645660077,-0.002527092098700363,True,
+pass,passing downs,explosive,6,without Campbell at Florida,-0.0022567228628021883,-0.002527092098700363,True,
+pass,passing downs,explosive,7,most influential play removed,-0.002294667046159991,-0.002527092098700363,True,Auburn offense: (01:48) No Huddle-Shotgun #17 B.Brown pass incomplete deep left to #4 J.Koger thrown to USM00. The previous pl
+pass,passing downs,explosive,8,environment correction removed,,-0.002527092098700363,,not applicable: no correction was triggered
+pass,passing downs,explosive,9,display threshold,,-0.002527092098700363,True,25 and 21 plays
+pass,passing downs,explosive,10,boosted baseline,-0.0024501505169757555,-0.002527092098700363,True,
+run,standard downs,value,1,2023-2025 sensitivity baseline,-0.010369160583339528,-0.010383585035431804,True,
+run,standard downs,value,2,garbage time included,-0.028617672845949543,-0.010383585035431804,True,
+run,standard downs,value,3,accepted-penalty snaps included,-0.010383585035431804,-0.010383585035431804,True,
+run,standard downs,value,4,giveaways removed,-0.0030102519846455294,-0.010383585035431804,True,
+run,standard downs,value,5,alternate explosive definition,,-0.010383585035431804,,not applicable to PPA
+run,standard downs,value,6,without Baylor at Auburn,-0.009449989268487074,-0.010383585035431804,True,
+run,standard downs,value,6,without Southern Miss at Auburn,-0.0006568871496406567,-0.010383585035431804,True,
+run,standard downs,value,6,without Florida Atlantic at Florida,-0.013053142231846743,-0.010383585035431804,True,
+run,standard downs,value,6,without Campbell at Florida,-0.008778519126161639,-0.010383585035431804,True,
+run,standard downs,value,7,most influential play removed,-0.005436767045174393,-0.010383585035431804,True,Auburn offense: (04:11) No Huddle-Shotgun #23 J.Cobb rush middle for 19 yards gain to the USM04 fumbled by #23 J.Cobb at USM14
+run,standard downs,value,8,environment correction removed,,-0.010383585035431804,,not applicable: no correction was triggered
+run,standard downs,value,9,display threshold,,-0.010383585035431804,True,54 and 21 plays
+run,standard downs,value,10,boosted baseline,-0.012961751677091696,-0.010383585035431804,True,
+run,standard downs,explosive,1,2023-2025 sensitivity baseline,-0.0007763755680372812,-0.0007760885303366702,True,
+run,standard downs,explosive,2,garbage time included,-0.0007255585552622623,-0.0007760885303366702,True,
+run,standard downs,explosive,3,accepted-penalty snaps included,,-0.0007760885303366702,,not applicable: yardage unreliable
+run,standard downs,explosive,4,giveaways removed,-0.0007212912468934915,-0.0007760885303366702,True,
+run,standard downs,explosive,5,alternate explosive definition,-0.0015157063748859907,-0.0007760885303366702,True,
+run,standard downs,explosive,6,without Baylor at Auburn,-0.0011507818872724825,-0.0007760885303366702,True,
+run,standard downs,explosive,6,without Southern Miss at Auburn,6.490544534441508e-05,-0.0007760885303366702,False,
+run,standard downs,explosive,6,without Florida Atlantic at Florida,-0.0005802622386415515,-0.0007760885303366702,True,
+run,standard downs,explosive,6,without Campbell at Florida,-0.0006860146516319561,-0.0007760885303366702,True,
+run,standard downs,explosive,7,most influential play removed,-0.0007292423282372151,-0.0007760885303366702,True,Auburn offense: (02:42) No Huddle-Shotgun #29 O.Mabson II rush middle for 6 yards gain to the USM27 (#6 A.Martin)
+run,standard downs,explosive,8,environment correction removed,,-0.0007760885303366702,,not applicable: no correction was triggered
+run,standard downs,explosive,9,display threshold,,-0.0007760885303366702,True,54 and 21 plays
+run,standard downs,explosive,10,boosted baseline,-0.0009347949524742903,-0.0007760885303366702,True,
+run,passing downs,value,1,2023-2025 sensitivity baseline,0.0009717504361519491,0.001165848422561352,True,
+run,passing downs,value,2,garbage time included,0.02515751998720262,0.001165848422561352,True,
+run,passing downs,value,3,accepted-penalty snaps included,0.001165848422561352,0.001165848422561352,True,
+run,passing downs,value,4,giveaways removed,0.001165848422561352,0.001165848422561352,True,
+run,passing downs,value,5,alternate explosive definition,,0.001165848422561352,,not applicable to PPA
+run,passing downs,value,6,without Baylor at Auburn,0.01738962904840354,0.001165848422561352,True,
+run,passing downs,value,6,without Southern Miss at Auburn,-0.012235554949749775,0.001165848422561352,False,
+run,passing downs,value,6,without Florida Atlantic at Florida,-0.002602175915412767,0.001165848422561352,False,
+run,passing downs,value,6,without Campbell at Florida,0.0005799510859358153,0.001165848422561352,True,
+run,passing downs,value,7,most influential play removed,-0.004892377074140891,0.001165848422561352,False,"Auburn offense: (05:00) No Huddle-Shotgun #17 B.Brown rush middle for 12 yards gain to the USM47 (#35 W.Edison), 1ST DOWN"
+run,passing downs,value,8,environment correction removed,,0.001165848422561352,,not applicable: no correction was triggered
+run,passing downs,value,9,display threshold,,0.001165848422561352,True,15 and 13 plays
+run,passing downs,value,10,boosted baseline,-0.0021671539882901674,0.001165848422561352,False,
+run,passing downs,explosive,1,2023-2025 sensitivity baseline,-0.00028102130923081376,-0.00025881915929784095,True,
+run,passing downs,explosive,2,garbage time included,0.0021428409972735867,-0.00025881915929784095,False,
+run,passing downs,explosive,3,accepted-penalty snaps included,,-0.00025881915929784095,,not applicable: yardage unreliable
+run,passing downs,explosive,4,giveaways removed,-0.00025881915929784095,-0.00025881915929784095,True,
+run,passing downs,explosive,5,alternate explosive definition,-0.0005813093861836909,-0.00025881915929784095,True,
+run,passing downs,explosive,6,without Baylor at Auburn,0.00015287621110972934,-0.00025881915929784095,False,
+run,passing downs,explosive,6,without Southern Miss at Auburn,-0.0009405455767289955,-0.00025881915929784095,True,
+run,passing downs,explosive,6,without Florida Atlantic at Florida,9.625663976534858e-05,-0.00025881915929784095,False,
+run,passing downs,explosive,6,without Campbell at Florida,-9.59957852377948e-05,-0.00025881915929784095,True,
+run,passing downs,explosive,7,most influential play removed,-0.00012299502239373545,-0.00025881915929784095,True,"Auburn offense: (04:37) No Huddle-Shotgun #17 B.Brown rush right for 7 yards gain to the USM23 (#24 M.Robinson III), 1ST DOWN"
+run,passing downs,explosive,8,environment correction removed,,-0.00025881915929784095,,not applicable: no correction was triggered
+run,passing downs,explosive,9,display threshold,,-0.00025881915929784095,True,15 and 13 plays
+run,passing downs,explosive,10,boosted baseline,-0.0006466311398774532,-0.00025881915929784095,True,

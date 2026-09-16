@@ -1,0 +1,19 @@
+team,side,play_family,down_bin,distance_bin,plays,tier,shrunk_ppa_over_expected,raw_ppa_over_expected,fill,value_text,raw_text,plays_text,status_text
+Auburn,offense,run,1st,short 1-3,0,hidden,,,#fcfcfb,,,0 plays,hidden: under 8 plays
+Auburn,offense,run,1st,medium 4-7,1,hidden,,,#fcfcfb,,,1 play,hidden: under 8 plays
+Auburn,offense,run,1st,long 8+,34,eligible,-0.0158795703985968,-0.2018153283805202,#e88583,−0.016,raw −0.20,34 plays,
+Auburn,offense,run,2nd,short 1-3,1,hidden,,,#fcfcfb,,,1 play,hidden: under 8 plays
+Auburn,offense,run,2nd,medium 4-7,9,limited,-0.0110643528146454,-0.5004898527078119,#eaa5a3,−0.011,raw −0.50,9 plays,limited sample
+Auburn,offense,run,2nd,long 8+,8,limited,-0.0092588274558079,-0.1926877728896835,#ebb1af,−0.009,raw −0.19,8 plays,limited sample
+Auburn,offense,run,3rd/4th,short 1-3,9,limited,0.0026597668893771,0.1203130775927015,#dbe2ea,+0.003,raw +0.12,9 plays,limited sample
+Auburn,offense,run,3rd/4th,medium 4-7,3,hidden,,,#fcfcfb,,,3 plays,hidden: under 8 plays
+Auburn,offense,run,3rd/4th,long 8+,4,hidden,,,#fcfcfb,,,4 plays,hidden: under 8 plays
+Auburn,offense,pass,1st,short 1-3,0,hidden,,,#fcfcfb,,,0 plays,hidden: under 8 plays
+Auburn,offense,pass,1st,medium 4-7,0,hidden,,,#fcfcfb,,,0 plays,hidden: under 8 plays
+Auburn,offense,pass,1st,long 8+,25,eligible,-0.012489643828617,-0.2488686429290225,#ea9c9a,−0.012,raw −0.25,25 plays,
+Auburn,offense,pass,2nd,short 1-3,3,hidden,,,#fcfcfb,,,3 plays,hidden: under 8 plays
+Auburn,offense,pass,2nd,medium 4-7,4,hidden,,,#fcfcfb,,,4 plays,hidden: under 8 plays
+Auburn,offense,pass,2nd,long 8+,14,limited,-0.0168882500390771,-0.3568728493971848,#e77e7d,−0.017,raw −0.36,14 plays,limited sample
+Auburn,offense,pass,3rd/4th,short 1-3,3,hidden,,,#fcfcfb,,,3 plays,hidden: under 8 plays
+Auburn,offense,pass,3rd/4th,medium 4-7,9,limited,0.0036864468534668,0.1974911500443358,#d3dee9,+0.004,raw +0.20,9 plays,limited sample
+Auburn,offense,pass,3rd/4th,long 8+,7,hidden,,,#fcfcfb,,,7 plays,hidden: under 8 plays

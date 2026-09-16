@@ -1,0 +1,9 @@
+team,side,play_family,down_group,plays,tier,observed_pct,expected_pct,difference_pts,shrunk_pts,direction,observed_color,rates_text,difference_text,shrunk_text,plays_text,status_text
+Auburn,offense,run,standard downs,54,eligible,3.7037037037037,5.2330289466033495,-1.52932524289965,-0.09734839404074,unfavorable to Auburn,#e34948,3.7% vs. 5.2% expected,−1.5 pts,shrunk −0.10 pts,54 plays,
+Auburn,offense,run,passing downs,15,eligible,6.66666666666666,5.46872332463324,1.19794334203342,0.05424976641759,favorable to Auburn,#2a78d6,6.7% vs. 5.5% expected,+1.2 pts,shrunk +0.05 pts,15 plays,
+Auburn,offense,pass,standard downs,40,eligible,12.5,12.629421983805239,-0.12942198380524,-0.01063713189818,unfavorable to Auburn,#e34948,12.5% vs. 12.6% expected,−0.1 pts,shrunk −0.01 pts,40 plays,
+Auburn,offense,pass,passing downs,25,eligible,4.0,11.79424484874433,-7.794244848744331,-0.4861194521969,unfavorable to Auburn,#e34948,4.0% vs. 11.8% expected,−7.8 pts,shrunk −0.49 pts,25 plays,
+Florida,defense,run,standard downs,21,eligible,0.0,2.24678981784013,-2.24678981784013,-0.05786931202659,unfavorable to Auburn,#e34948,0.0% vs. 2.2% expected,−2.2 pts,shrunk −0.06 pts,21 plays,
+Florida,defense,run,passing downs,13,limited,0.0,2.0398647286962,-2.0398647286962,-0.10601359827716,unfavorable to Auburn,#e34948,0.0% vs. 2.0% expected,−2.0 pts,shrunk −0.11 pts,13 plays,limited sample
+Florida,defense,pass,standard downs,40,eligible,5.0,6.31944048464432,-1.31944048464431,-0.048012389707320004,unfavorable to Auburn,#e34948,5.0% vs. 6.3% expected,−1.3 pts,shrunk −0.05 pts,40 plays,
+Florida,defense,pass,passing downs,21,eligible,4.76190476190476,5.75465284230972,-0.99274808040496,-0.01929896754316,unfavorable to Auburn,#e34948,4.8% vs. 5.8% expected,−1.0 pts,shrunk −0.02 pts,21 plays,

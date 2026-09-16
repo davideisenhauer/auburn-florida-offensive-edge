@@ -1,0 +1,19 @@
+team,side,play_family,down_bin,distance_bin,plays,tier,shrunk_ppa_over_expected,raw_ppa_over_expected,fill,value_text,raw_text,plays_text,status_text
+Florida,defense,run,1st,short 1-3,1,hidden,,,#fcfcfb,,,1 play,hidden: under 8 plays
+Florida,defense,run,1st,medium 4-7,0,hidden,,,#fcfcfb,,,0 plays,hidden: under 8 plays
+Florida,defense,run,1st,long 8+,13,limited,-0.0038130482203064,-0.1020635684015418,#eed6d3,−0.004,raw −0.10,13 plays,limited sample
+Florida,defense,run,2nd,short 1-3,2,hidden,,,#fcfcfb,,,2 plays,hidden: under 8 plays
+Florida,defense,run,2nd,medium 4-7,1,hidden,,,#fcfcfb,,,1 play,hidden: under 8 plays
+Florida,defense,run,2nd,long 8+,8,limited,-0.0004011265907109,-0.0215455120035598,#f0ece9,0.000,raw −0.02,8 plays,limited sample
+Florida,defense,run,3rd/4th,short 1-3,3,hidden,,,#fcfcfb,,,3 plays,hidden: under 8 plays
+Florida,defense,run,3rd/4th,medium 4-7,5,hidden,,,#fcfcfb,,,5 plays,hidden: under 8 plays
+Florida,defense,run,3rd/4th,long 8+,1,hidden,,,#fcfcfb,,,1 play,hidden: under 8 plays
+Florida,defense,pass,1st,short 1-3,0,hidden,,,#fcfcfb,,,0 plays,hidden: under 8 plays
+Florida,defense,pass,1st,medium 4-7,0,hidden,,,#fcfcfb,,,0 plays,hidden: under 8 plays
+Florida,defense,pass,1st,long 8+,21,eligible,0.0002720126147283,0.0111706513781795,#eeeeec,0.000,raw +0.01,21 plays,
+Florida,defense,pass,2nd,short 1-3,3,hidden,,,#fcfcfb,,,3 plays,hidden: under 8 plays
+Florida,defense,pass,2nd,medium 4-7,8,limited,-0.003180192102559,-0.3376568964892101,#eedad7,−0.003,raw −0.34,8 plays,limited sample
+Florida,defense,pass,2nd,long 8+,9,limited,-0.0016361654280289,-0.1732626469819159,#efe4e1,−0.002,raw −0.17,9 plays,limited sample
+Florida,defense,pass,3rd/4th,short 1-3,5,hidden,,,#fcfcfb,,,5 plays,hidden: under 8 plays
+Florida,defense,pass,3rd/4th,medium 4-7,13,limited,0.0024617310847877,0.1812326424620748,#dde3ea,+0.002,raw +0.18,13 plays,limited sample
+Florida,defense,pass,3rd/4th,long 8+,2,hidden,,,#fcfcfb,,,2 plays,hidden: under 8 plays

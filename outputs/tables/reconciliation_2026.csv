@@ -1,0 +1,133 @@
+game_id,week,offense,defense,metric,play_by_play,cfbd,official,reference,diff_vs_reference,status,cfbd_vs_official,official_source
+401856636,1,Auburn,Baylor,points,,17.0,17.0,official,,info,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,plays,76.0,76.0,76.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,rushes (incl. sacks),41.0,41.0,41.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,pass attempts (excl. sacks),35.0,35.0,35.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,total yards,414.0,389.0,389.0,official,25.0,investigate,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,interceptions thrown,3.0,3.0,3.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,fumbles lost,0.0,0.0,0.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,sacks allowed,5.0,5.0,5.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,penalties,,6.0,6.0,official,,info,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,penalty yards,,47.0,47.0,official,,info,0.0,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,ppa_total (info),2.1178482909456005,-3.2726868842351524,,cfbd,5.391,info,,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,advanced plays (info),,75.0,,cfbd,,info,,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,accepted penalty snaps (info),1.0,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,yards on accepted penalty snaps (info),33.0,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,"ppa matches CFBD, possession-change plays (share, info)",0.0,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Auburn,Baylor,plays matched to CFBD /plays (info),75.0,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,points,,16.0,16.0,official,,info,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,plays,99.0,99.0,99.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,rushes (incl. sacks),45.0,45.0,45.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,pass attempts (excl. sacks),54.0,54.0,54.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,total yards,455.0,436.0,436.0,official,19.0,investigate,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,interceptions thrown,1.0,1.0,1.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,fumbles lost,1.0,1.0,1.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,sacks allowed,1.0,1.0,1.0,official,0.0,match,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,penalties,,5.0,5.0,official,,info,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,penalty yards,,40.0,40.0,official,,info,0.0,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,accepted penalty snaps (info),1.0,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,yards on accepted penalty snaps (info),11.0,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,ppa_total (info),5.975402257120525,,,cfbd,,info,,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,"ppa matches CFBD, possession-change plays (share, info)",0.2,,,official,,info,,WMT wmt_game_6594109
+401856636,1,Baylor,Auburn,plays matched to CFBD /plays (info),98.0,,,official,,info,,WMT wmt_game_6594109
+401856637,1,Florida,Florida Atlantic,points,,66.0,66.0,official,,info,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,plays,67.0,67.0,67.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,rushes (incl. sacks),41.0,41.0,41.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,pass attempts (excl. sacks),26.0,26.0,26.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,total yards,621.0,624.0,624.0,official,-3.0,minor,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,interceptions thrown,1.0,1.0,1.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,fumbles lost,0.0,0.0,0.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,sacks allowed,1.0,1.0,0.0,official,1.0,minor,1.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,penalties,,3.0,3.0,official,,info,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,penalty yards,,32.0,32.0,official,,info,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,ppa_total (info),42.93891341089025,41.19184350680552,,cfbd,1.747,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,advanced plays (info),,68.0,,cfbd,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,accepted penalty snaps (info),2.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,yards on accepted penalty snaps (info),19.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,"ppa matches CFBD, possession-change plays (share, info)",0.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida,Florida Atlantic,plays matched to CFBD /plays (info),67.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,points,,21.0,21.0,official,,info,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,plays,90.0,90.0,90.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,rushes (incl. sacks),37.0,37.0,37.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,pass attempts (excl. sacks),53.0,53.0,53.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,total yards,398.0,396.0,396.0,official,2.0,minor,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,interceptions thrown,2.0,2.0,2.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,fumbles lost,1.0,1.0,1.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,sacks allowed,2.0,2.0,2.0,official,0.0,match,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,penalties,,9.0,9.0,official,,info,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,penalty yards,,88.0,88.0,official,,info,0.0,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,accepted penalty snaps (info),1.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,yards on accepted penalty snaps (info),3.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,ppa_total (info),9.486695956292113,,,cfbd,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,"ppa matches CFBD, possession-change plays (share, info)",0.1667,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856637,1,Florida Atlantic,Florida,plays matched to CFBD /plays (info),90.0,,,official,,info,,Sidearm boxscore_27903_florida-atlantic
+401856671,2,Auburn,Southern Miss,points,,43.0,43.0,official,,info,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,plays,85.0,84.0,85.0,official,0.0,match,-1.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,rushes (incl. sacks),51.0,51.0,51.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,pass attempts (excl. sacks),34.0,33.0,34.0,official,0.0,match,-1.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,total yards,613.0,610.0,613.0,official,0.0,match,-3.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,interceptions thrown,0.0,0.0,0.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,fumbles lost,1.0,1.0,1.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,sacks allowed,1.0,1.0,1.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,penalties,,10.0,10.0,official,,info,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,penalty yards,,73.0,73.0,official,,info,0.0,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,ppa_total (info),29.234812980858194,24.88230402346996,,cfbd,4.353,info,,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,advanced plays (info),,85.0,,cfbd,,info,,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,accepted penalty snaps (info),2.0,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,yards on accepted penalty snaps (info),16.0,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,"ppa matches CFBD, possession-change plays (share, info)",0.0,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Auburn,Southern Miss,plays matched to CFBD /plays (info),84.0,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,points,,8.0,8.0,official,,info,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,plays,57.0,58.0,58.0,official,-1.0,minor,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,rushes (incl. sacks),24.0,25.0,25.0,official,-1.0,minor,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,pass attempts (excl. sacks),33.0,33.0,33.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,total yards,253.0,221.0,221.0,official,32.0,investigate,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,interceptions thrown,2.0,2.0,2.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,fumbles lost,0.0,0.0,0.0,official,0.0,match,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,sacks allowed,3.0,4.0,4.0,official,-1.0,minor,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,penalties,,11.0,11.0,official,,info,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,penalty yards,,85.0,85.0,official,,info,0.0,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,accepted penalty snaps (info),3.0,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,yards on accepted penalty snaps (info),20.0,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,ppa_total (info),-4.363831874231303,,,cfbd,,info,,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,"ppa matches CFBD, possession-change plays (share, info)",0.3333,,,official,,info,,WMT wmt_game_6593077
+401856671,2,Southern Miss,Auburn,plays matched to CFBD /plays (info),57.0,,,official,,info,,WMT wmt_game_6593077
+401856672,2,Florida,Campbell,points,,52.0,52.0,official,,info,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,plays,62.0,62.0,62.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,rushes (incl. sacks),30.0,30.0,30.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,pass attempts (excl. sacks),32.0,32.0,32.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,total yards,514.0,514.0,514.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,interceptions thrown,1.0,1.0,1.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,fumbles lost,0.0,1.0,1.0,official,-1.0,minor,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,sacks allowed,0.0,0.0,0.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,penalties,,8.0,8.0,official,,info,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,penalty yards,,95.0,95.0,official,,info,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,ppa_total (info),30.248250634548988,24.74047197028171,,cfbd,5.508,info,,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,advanced plays (info),,63.0,,cfbd,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,accepted penalty snaps (info),3.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,yards on accepted penalty snaps (info),12.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,"ppa matches CFBD, possession-change plays (share, info)",0.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Florida,Campbell,plays matched to CFBD /plays (info),62.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,points,,3.0,3.0,official,,info,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,plays,63.0,63.0,63.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,rushes (incl. sacks),25.0,25.0,25.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,pass attempts (excl. sacks),38.0,38.0,38.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,total yards,198.0,210.0,210.0,official,-12.0,minor,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,interceptions thrown,0.0,0.0,0.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,fumbles lost,2.0,2.0,2.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,sacks allowed,2.0,2.0,2.0,official,0.0,match,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,penalties,,7.0,7.0,official,,info,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,penalty yards,,55.0,55.0,official,,info,0.0,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,accepted penalty snaps (info),2.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,yards on accepted penalty snaps (info),-2.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,ppa_total (info),-14.998005762939098,,,cfbd,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,"ppa matches CFBD, other plays (share)",1.0,,,official,,match,,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,"ppa matches CFBD, possession-change plays (share, info)",1.0,,,official,,info,,Sidearm boxscore_27904_campbell
+401856672,2,Campbell,Florida,plays matched to CFBD /plays (info),63.0,,,official,,info,,Sidearm boxscore_27904_campbell
