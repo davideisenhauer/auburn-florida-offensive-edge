@@ -75,11 +75,54 @@ Every 2026 FBS offense was paired with every 2026 FBS defense (18,906 pairings) 
 
 Auburn–Florida's largest edge is **smaller than 72% of all FBS pairings**. The frozen decision did not fail to find something unusual; there was nothing unusual to find. This context cannot overturn the no-claims decision, and it is not used as a finding.
 
-## 5. What this means for the matchup
+## 5. Does any of this predict a game? A backtest on 3,184 games
+
+Everything above is a measurement. This is the test. For every FBS-vs-FBS game from 2021 to 2025, the matchup edge was rebuilt using only that season's earlier games, then compared with what the offense actually did in that game against the frozen baseline. The baseline scoring each play was fit without the season it scores.
+
+| Decile of the pre-kickoff edge | Mean edge | What the offense actually did |
+|---|---:|---:|
+| 1 (edge against the offense) | −0.040 | −0.094 |
+| 2 | −0.023 | −0.043 |
+| 5 | −0.003 | −0.006 |
+| 9 | +0.022 | +0.051 |
+| 10 (edge for the offense) | +0.039 | +0.082 |
+
+Monotonic across all ten deciles. The gap between the top and bottom decile is 0.176 PPA per play, about 12 points over a 70-play game, so this is not a trivial effect. **Correlation +0.234** (95% season-clustered interval +0.209 to +0.258, 6,368 matchup sides). A strictly prospective check, scoring 2025 with the model that only ever saw 2021–2024, gives +0.244.
+
+The fitted slope is 2.1. That is the expected value, not a surprise: the spec defines the edge as the *average* of the offensive and defensive components, and both act on the same result, so the realized difference should be about twice the edge.
+
+**Shrinking is what makes an early edge usable.** By how many games each team had played before kickoff:
+
+| Prior games | Raw edge, RMSE vs. no information | Shrunk edge |
+|---:|---:|---:|
+| 2 | **4.4% worse** | 1.1% better |
+| 3 | 2.7% worse | 1.0% better |
+| 4 | 0.2% better | 1.4% better |
+| 8 | 3.4% better | 2.7% better |
+
+At the sample this project actually had, taking the edge at face value is worse than having no information at all. The direction is right either way; the scale is what shrinkage fixes.
+
+## 6. The edge contains nothing the betting market hasn't already priced
+
+The same edges, tested against the closing point spread on 3,189 games with a market line:
+
+| | |
+|---|---:|
+| Correlation between the model's lean and the result against the line | **+0.004** |
+| 95% season-clustered interval | −0.031 to +0.037 |
+| Beat-the-line rate by quintile of model lean | 47%, 49%, 50%, 51%, 48% |
+
+Nothing. The persistence measured in section 5 is persistence in **what my baseline misses**, not in what the market misses. Some of it is team quality the model doesn't capture; some is the model's own blind spots, which repeat because the model repeats. The two cannot be separated here, and either way the market has already priced it.
+
+This is the strongest argument against making a pregame claim, and it is stronger than the sample-size argument: even a well-measured edge of this kind adds nothing to what anyone can already read off a betting line.
+
+## 7. What this means for the matchup
 
 Two games can support a description of what Auburn's offense chooses to do. Through the cutoff, it passed on 48.5% of its snaps outside garbage time, 72nd of 138 FBS teams, and 42.6% on standard downs (67th): close to league-median balance.
 
-Two games cannot support a claim about how good either unit is, how they match up, or where an edge lies. That is not a limitation of this project's method. It is a property of two games, and it is measurable.
+Two games cannot support a claim about how good either unit is, how they match up, or where an edge lies. That is not a limitation of this project's method; it is a property of two games, and it is measurable.
+
+And even with a full season of data, this class of edge would not be worth publishing as a prediction. Section 6 shows it carries no information the market lacks. What it is good for is description: saying what a unit has done against a situational baseline, with the uncertainty attached.
 
 ## Method notes and caveats
 
@@ -89,4 +132,7 @@ Two games cannot support a claim about how good either unit is, how they match u
 - **"Games to half weight"** is that constant divided by the median plays per game for the measure. Sack rate uses pass snaps as its denominator, so its games count reflects dropbacks, not all snaps.
 - **The rank posterior** assumes a normal prior and likelihood and independent plays. Game-to-game correlation would widen the intervals.
 - **The prediction test** fits the shrinkage without the season it scores, but the measures and the model specification were chosen with all seasons visible. It is a fair comparison between treatments, not a forecast of future accuracy.
+- **The backtest** uses only games played before each kickoff, and the baseline is fit without the season it scores. The shrinkage constant is fitted on 2021–2025, which includes the seasons being scored, so the shrunk numbers carry a small in-sample advantage; the raw-vs-shrunk comparison does not depend on the exact constant.
+- **What the backtest cannot separate** is team quality the baseline misses from persistent bias in the baseline itself. Both would produce the same predictable residual.
+- **The market test** uses the median closing spread across providers and covers the 3,189 games that have one. The interval rules out any relationship larger than about ±0.04 in correlation, not every conceivable effect.
 - **Pairings** include every FBS offense and defense with at least 8 plays in a situation, whether or not the teams ever play each other. They are a reference distribution, not predictions of games.

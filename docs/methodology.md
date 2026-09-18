@@ -152,7 +152,10 @@ On September 18, the project owner chose to publish a pregame post that makes no
 | V6 `v6_reliability_spectrum.png` | Games needed before each measure is worth as much as the league average |
 | V7 `v7_rank_intervals.png` | The range of national ranks consistent with each 2026 FBS offense's two games |
 | V8 `v8_pairing_distribution.png` | The largest situational edge for every 2026 FBS offense–defense pairing |
+| V9 `v9_backtest.png` | Whether the edge predicted the game, 2021–2025, and whether it beat the market |
 
 ## 10. Supporting analysis
 
 After the decision, `src/insights.py` added league-wide context: how reliable each early-season measure is, whether opponent- and situation-adjusted early numbers predict better than raw ones, empirical-Bayes rank intervals for every 2026 FBS offense, and the same matchup edge computed for all 18,906 FBS pairings. It reuses the frozen samples and shrinkage, adds no matchup finding, and reproduces the frozen Auburn–Florida edges exactly as a check. Results and caveats: [`insights.md`](insights.md); logged as change log #16.
+
+`src/backtest.py` then tested the method itself (change log #17). For every FBS-vs-FBS game from 2021 to 2025 it rebuilt the edge from that season's earlier games only and compared it with what the offense did in that game. The edge predicts the offense's result against the baseline (correlation +0.23, monotonic across deciles) and predicts nothing at all against the closing point spread (+0.004, interval −0.03 to +0.04). Shrinking is what makes an early edge usable: at two games in, raw edges are 4.4% worse than no information and shrunk edges 1.1% better.

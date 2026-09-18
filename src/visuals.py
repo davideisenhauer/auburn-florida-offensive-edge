@@ -693,6 +693,86 @@ def build_v8():
     return fig, summary
 
 
+# ---------------------------------------------------------------- V9: the edge is real, and the market knows it
+
+def backtest_data() -> pd.DataFrame:
+    deciles = read_table("backtest_deciles.csv").assign(panel="offense result")
+    market = read_table("backtest_market.csv")
+    quintiles = market[market.row == "quintile"].assign(panel="against the market line")
+    summary = read_table("backtest_summary.csv")
+    shrunk = summary[summary.edge == "shrunk"].iloc[0]
+    columns = ["panel", "decile", "quintile", "games", "mean_edge", "mean_realized", "fitted_realized",
+               "mean_lean", "mean_result_vs_line", "beat_the_line_rate", "slope"]
+    combined = pd.concat([deciles, quintiles], ignore_index=True)
+    for column in columns:
+        if column not in combined:
+            combined[column] = np.nan
+    combined["correlation_offense_result"] = shrunk.correlation
+    combined["correlation_vs_line"] = float(market[market.row == "overall"].correlation_lean_vs_result_against_line.iloc[0])
+    combined["line_ci_low"] = float(market[market.row == "overall"].ci_low.iloc[0])
+    combined["line_ci_high"] = float(market[market.row == "overall"].ci_high.iloc[0])
+    return combined[columns + ["correlation_offense_result", "correlation_vs_line", "line_ci_low", "line_ci_high"]]
+
+
+def build_v9():
+    data = backtest_data()
+    deciles = data[data.panel == "offense result"]
+    quintiles = data[data.panel == "against the market line"]
+    summary = read_table("backtest_summary.csv")
+    shrunk = summary[(summary.edge == "shrunk") & summary["sample"].str.startswith("2021")].iloc[0]
+    market = read_table("backtest_market.csv")
+    overall = market[market.row == "overall"].iloc[0]
+    slope = float(deciles.slope.iloc[0])
+    with plt.rc_context(STYLE):
+        fig = plt.figure(figsize=(FIG_WIDTH, 8.7))
+        frame(fig, "The edge is real. The market already knows it.",
+              [f"Every FBS-vs-FBS game from 2021 to 2025 ({int(shrunk.games):,} matchup sides), with each team's edge rebuilt from that season's earlier",
+               "games only and the baseline fit without the season it scores. Left: the edge against what the offense actually did, by decile.",
+               "Right: the same edge against the result relative to the closing point spread."],
+              "backtest_deciles.csv")
+
+        ax = fig.add_axes(axes_rect(fig, 1.35, 2.8, 4.1, 3.9))
+        limit = float(np.abs(np.r_[deciles.mean_edge, deciles.mean_realized]).max()) * 1.15
+        ax.set_xlim(-limit / 2, limit / 2)
+        ax.set_ylim(-limit, limit)
+        ax.axhline(0, color=AXIS, linewidth=1.2, zorder=1)
+        ax.axvline(0, color=AXIS, linewidth=1.2, zorder=1)
+        ax.grid(color=GRID, linewidth=1)
+        ax.set_axisbelow(True)
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        line_x = np.array([-limit / 2, limit / 2])
+        ax.plot(line_x, slope * line_x, color=MUTED, linewidth=1.5, zorder=2)
+        ax.scatter(deciles.mean_edge, deciles.mean_realized, s=52, facecolor=INK_2, edgecolor=SURFACE, linewidth=1.5, zorder=4)
+        ax.set_xlabel("Matchup edge before kickoff (PPA per play)", fontsize=11.5, labelpad=8)
+        ax.set_ylabel("What the offense actually did, vs. the baseline", fontsize=11.5, labelpad=8)
+        ax.tick_params(labelsize=10.5)
+        ax.text(0.03, 0.95, f"Correlation {signed(shrunk.correlation, 2)}\nEach dot is a tenth of the games\nSlope {slope:.1f}: the edge averages two\nsides, so about 2 is expected",
+                transform=ax.transAxes, fontsize=10.5, color=INK, va="top", linespacing=1.5, gid="annotation",
+                bbox={"facecolor": SURFACE, "edgecolor": "none", "pad": 3})
+
+        ax2 = fig.add_axes(axes_rect(fig, 6.9, 2.8, 4.1, 3.9))
+        x = np.arange(len(quintiles))
+        ax2.bar(x, quintiles.mean_result_vs_line, width=0.62, color=MUTED, alpha=0.75, zorder=3)
+        ax2.axhline(0, color=AXIS, linewidth=1.2, zorder=2)
+        ax2.set_xlim(-0.7, len(quintiles) - 0.3)
+        ax2.set_ylim(-3, 3)
+        ax2.set_xticks(x, ["edge favors\nthe visitor", "", "even", "", "edge favors\nthe home team"], fontsize=10)
+        ax2.set_yticks([-3, -2, -1, 0, 1, 2, 3], ["\u22123", "\u22122", "\u22121", "0", "+1", "+2", "+3"])
+        ax2.grid(axis="y", color=GRID, linewidth=1)
+        ax2.set_axisbelow(True)
+        ax2.tick_params(labelsize=10.5)
+        for spine in ax2.spines.values():
+            spine.set_visible(False)
+        ax2.set_ylabel("Points better than the closing line", fontsize=11.5, labelpad=8)
+        interval = f"{signed(overall.ci_low, 2)} to {signed(overall.ci_high, 2)}"
+        ax2.text(0.5, 0.95, f"Correlation {signed(overall.correlation_lean_vs_result_against_line, 3)}"
+                            f"\n(95% interval {interval})\nNo relationship: the line already prices it",
+                 transform=ax2.transAxes, fontsize=10.5, color=INK, ha="center", va="top", linespacing=1.5, gid="annotation",
+                 bbox={"facecolor": SURFACE, "edgecolor": "none", "pad": 3})
+    return fig, data
+
+
 # ---------------------------------------------------------------- main
 
 FIGURE_BUILDERS = {
@@ -704,6 +784,7 @@ FIGURE_BUILDERS = {
     "v6_reliability_spectrum": build_v6,
     "v7_rank_intervals": build_v7,
     "v8_pairing_distribution": build_v8,
+    "v9_backtest": build_v9,
 }
 
 

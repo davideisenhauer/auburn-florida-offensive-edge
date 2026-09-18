@@ -18,9 +18,10 @@ from matplotlib.colors import to_hex, to_rgb
 from src import config
 
 NAMES = ["v1_auburn_offense_ppa", "v2_florida_defense_ppa", "v3_explosive_plays", "v4_opportunity_map", "v5_two_game_reliability",
-         "v6_reliability_spectrum", "v7_rank_intervals", "v8_pairing_distribution"]
+         "v6_reliability_spectrum", "v7_rank_intervals", "v8_pairing_distribution", "v9_backtest"]
 SOURCES = ["team_cells_fine", "team_cells_rollup", "matchup_findings", "shrinkage_k",
-           "insight_reliability", "insight_rank_intervals", "insight_pairings"]
+           "insight_reliability", "insight_rank_intervals", "insight_pairings",
+           "backtest_deciles", "backtest_market", "backtest_summary"]
 FINE_KEYS = ["play_family", "down_bin", "distance_bin"]
 HEATMAPS = [("v1_auburn_offense_ppa", "Auburn", "offense"), ("v2_florida_defense_ppa", "Florida", "defense")]
 RECOMMENDATION = re.compile(
@@ -289,6 +290,28 @@ def test_pairing_distribution_matches_the_frozen_findings(tables, saved):
     assert (d.median_abs_edge <= d.p90_abs_edge).all() and (d.p90_abs_edge <= d.largest_abs_edge).all()
     summary = d[(d.metric == "value") & (d.play_family == "any")].iloc[0]
     assert summary.pairings > 10_000 and abs(summary.auburn_florida_edge) <= summary.largest_abs_edge
+
+
+def test_backtest_figure_matches_its_tables(tables, saved):
+    d = saved["v9_backtest"]
+    deciles = d[d.panel == "offense result"].sort_values("decile")
+    source = tables["backtest_deciles"].sort_values("decile")
+    assert len(deciles) == 10
+    assert close(deciles.mean_edge.to_numpy(), source.mean_edge.to_numpy())
+    assert close(deciles.mean_realized.to_numpy(), source.mean_realized.to_numpy())
+    assert close(deciles.slope.to_numpy(), source.slope.to_numpy())
+
+    quintiles = d[d.panel == "against the market line"].sort_values("quintile")
+    market = tables["backtest_market"]
+    expected = market[market.row == "quintile"].sort_values("quintile")
+    assert len(quintiles) == 5
+    assert close(quintiles.mean_result_vs_line.to_numpy(), expected.mean_result_vs_line.to_numpy())
+    overall = market[market.row == "overall"].iloc[0]
+    assert close(d.correlation_vs_line, overall.correlation_lean_vs_result_against_line)
+    assert close(d.line_ci_low, overall.ci_low) and close(d.line_ci_high, overall.ci_high)
+    shrunk = tables["backtest_summary"].query("edge == 'shrunk' and sample.str.startswith('2021')").iloc[0]
+    assert close(d.correlation_offense_result, shrunk.correlation)
+    assert (d.line_ci_low < 0).all() and (d.line_ci_high > 0).all()  # the market panel is a null result
 
 
 # ---------------------------------------------------------------- rules for every figure

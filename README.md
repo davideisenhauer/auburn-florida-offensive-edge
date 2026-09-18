@@ -22,7 +22,13 @@ The pregame write-up is therefore about what two games of data can and cannot te
 
 **The matchup question.** All eight findings (4 situations × PPA and explosive plays) carry the frozen label "no clear signal." The only edge leaning Auburn's way, +0.001 PPA per play on 15 and 13 plays, flips if one 12-yard run is removed. The three findings that survive every robustness check are each within 0.013 PPA per play, or 0.26 percentage points of explosive-play rate, of zero.
 
-**What two games can and cannot establish** ([`docs/insights.md`](docs/insights.md)), measured on 2021–2025 FBS team-seasons:
+**Does this kind of edge predict anything?** Tested on every FBS-vs-FBS game from 2021 to 2025, with each team's edge rebuilt from that season's earlier games only ([`docs/insights.md`](docs/insights.md) sections 5–6):
+
+- **The edge is real and not small.** Sorted into deciles by the pre-kickoff edge, offenses finish in order every time, from −0.094 to +0.082 PPA per play, a gap worth about 12 points over a 70-play game. Correlation +0.234 (95% interval +0.209 to +0.258); +0.244 when the baseline has never seen the season it scores.
+- **Unshrunk, it is worse than nothing.** At two games in, the raw edge predicts 4.4% worse than assuming every team is league average. Shrunk, 1.1% better.
+- **It beats the market by nothing at all.** Against the closing point spread on 3,189 games: correlation +0.004 (interval −0.031 to +0.037), and beat-the-line rates of 47–51% across quintiles. The persistence is in what this baseline misses, not in what the market misses.
+
+**What two games can and cannot establish**, measured on 2021–2025 FBS team-seasons:
 
 1. **Play-calling settles almost immediately; quality does not.** After two games, the best estimate of a team's pass rate is 59% its own number and 41% league average; its own number carries equal weight after 1.4 games. Opponent-adjusted efficiency needs about 11 games to reach that bar, and adjusted explosiveness 17. Defenses take longer than offenses.
 2. **Two games cannot rank a team.** The median FBS offense's 90% rank interval covers 118 of 138 places, and 124 of 138 offenses could still be top-25. Auburn's own range is 24th to 136th, so neither panic nor optimism is supported.
@@ -34,9 +40,10 @@ The pregame write-up is therefore about what two games of data can and cannot te
 | | |
 |---|---|
 | **What two games can and can't tell you** (V6) ![Games needed before a measure is worth as much as the league average](outputs/figures/v6_reliability_spectrum.png) | **Two games cannot rank an offense** (V7) ![Plausible national rank ranges for every FBS offense](outputs/figures/v7_rank_intervals.png) |
-| **The edge here is an ordinary one** (V8) ![Distribution of the largest edge across all FBS pairings](outputs/figures/v8_pairing_distribution.png) | **All eight findings: no clear signal** (V4) ![Matchup map of PPA edge and explosive-play edge](outputs/figures/v4_opportunity_map.png) |
+| **The edge is real; the market knows it** (V9) ![Backtest of the edge against game results and against the closing line](outputs/figures/v9_backtest.png) | **The edge here is an ordinary one** (V8) ![Distribution of the largest edge across all FBS pairings](outputs/figures/v8_pairing_distribution.png) |
+| **All eight findings: no clear signal** (V4) ![Matchup map of PPA edge and explosive-play edge](outputs/figures/v4_opportunity_map.png) | **Shrinkage by situation** (V5) ![Weight a two-game result deserves, by situation](outputs/figures/v5_two_game_reliability.png) |
 | **Auburn offense, PPA over expected** (V1) ![Auburn offense heatmap](outputs/figures/v1_auburn_offense_ppa.png) | **Florida defense, PPA allowed over expected** (V2) ![Florida defense heatmap](outputs/figures/v2_florida_defense_ppa.png) |
-| **Explosive plays, observed vs. expected** (V3) ![Explosive-play rates](outputs/figures/v3_explosive_plays.png) | **Shrinkage by situation** (V5) ![Weight a two-game result deserves, by situation](outputs/figures/v5_two_game_reliability.png) |
+| **Explosive plays, observed vs. expected** (V3) ![Explosive-play rates](outputs/figures/v3_explosive_plays.png) | |
 
 Every figure uses the same color direction: **blue = better for Auburn** (Auburn's offense produced more, or Florida's defense allowed more), **red = worse**. Cells with fewer than 8 plays are blank, and 8–14 plays are labeled "limited sample." The numbers drawn on each figure are saved next to it as `outputs/figures/*_data.csv` and tested against the analysis tables.
 
@@ -60,6 +67,8 @@ All 58 raw files are frozen and hashed in [`data/data_manifest.csv`](data/data_m
 6. **Edge** = average of Auburn's and Florida's shrunk residuals. Each finding must survive up to 10 robustness checks, including each game left out, the most influential play removed, garbage time included, giveaways removed, and an XGBoost baseline.
 
 7. **Supporting analysis**, added after the decision and logged as change log #16: how reliable each early-season measure is, whether adjusting beats raw, rank intervals for every FBS offense, and the same edge computed for every FBS pairing.
+
+8. **The method tested against reality** (change log #17): for every FBS game from 2021 to 2025, rebuild the edge from earlier games only, then check it against what the offense actually did and against the closing point spread.
 
 Full method: [`docs/methodology.md`](docs/methodology.md) · What two games can and cannot tell you: [`docs/insights.md`](docs/insights.md) · Model card: [`outputs/model_card.md`](outputs/model_card.md)
 
@@ -88,6 +97,7 @@ cp .env.example .env                  # add a free CollegeFootballData API key (
 .venv/bin/python -m src.models        # baselines, 2025 test, 2026 environment check
 .venv/bin/python -m src.matchup       # team profiles, shrinkage, findings, go/no-go
 .venv/bin/python -m src.insights      # league-wide reliability, ranks, and pairings (supporting)
+.venv/bin/python -m src.backtest      # does the edge predict games, and does it beat the market
 .venv/bin/python -m src.visuals       # figures and the numbers behind them
 .venv/bin/python -m pytest
 ```
@@ -96,7 +106,7 @@ Then run `notebooks/01_data_audit.ipynb`, `02_baseline_models.ipynb`, and `03_ma
 
 Raw data is not committed, so a fresh clone downloads all 58 raw files. If any source has changed since the September 16, 2026 snapshot, `src.ingest` stops with a hash mismatch instead of silently using different data.
 
-**Verified September 18, 2026:** a fresh Python 3.12 environment was built from `requirements.txt` and used only the frozen raw files. After the correction below, the full pipeline ran end to end in it in about 4 minutes, all 126 tests passed, and the three notebooks executed without errors. The rerun reproduced all 45 outputs byte for byte: every table in `outputs/tables/`, the fitted models, the cleaned and scored play files, the figure data, and the figure PNGs. The notebook outputs matched the saved notebooks cell for cell.
+**Verified September 18, 2026:** a fresh Python 3.12 environment was built from `requirements.txt` and used only the frozen raw files. After the correction below, the full pipeline ran end to end in about five minutes on an unloaded laptop, all 136 tests passed, and the three notebooks executed without errors. The rerun reproduced all 51 outputs byte for byte: every table in `outputs/tables/`, the fitted models, the cleaned and scored play files, the figure data, and the figure PNGs. The notebook outputs matched the saved notebooks cell for cell.
 
 ## Corrections
 
@@ -126,8 +136,8 @@ Raw data is not committed, so a fresh clone downloads all 58 raw files. If any s
 │   ├── models/                  fitted baselines and model_selection.json
 │   ├── tables/                  every analysis table
 │   └── model_card.md
-├── src/                         config, ingest, clean, reconcile, features, models, matchup, insights, visuals
-└── tests/                       cleaning, features, leakage, matchup, insights, visuals
+├── src/                         config, ingest, clean, reconcile, features, models, matchup, insights, backtest, visuals
+└── tests/                       cleaning, features, leakage, matchup, insights, backtest, visuals
 ```
 
 The original project plan is kept in `Auburn_vs_Florida_Offensive_Edge_Project_Plan.md`. Where it differs from the spec, the spec wins.

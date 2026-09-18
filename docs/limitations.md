@@ -45,7 +45,13 @@ These limits apply to every number, figure, and post from this project. Each one
 - **A fresh clone may not be able to reproduce the snapshot exactly.** `src/ingest.py` checks every file, present or downloaded again, against its recorded SHA-256 hash and stops if one changed. If an upstream source has been corrected since September 16, the ingest fails loudly rather than silently using new data. Running it with `--refresh` accepts the new version, and results may then differ.
 - **Figures depend on installed fonts.** They use Helvetica Neue where available and fall back to other sans-serif fonts. The numbers do not change, but the layout can shift slightly on other machines.
 
-## 7. What this project does not claim
+## 7. What the backtest does and does not establish
+
+- The edge predicts the offense's result **against this project's baseline**, not against the market. On 3,189 games with a closing line, the correlation with the result relative to that line is +0.004 (interval −0.031 to +0.037).
+- Predictable residuals can mean the baseline misses real team quality, or that the baseline has persistent blind spots. This analysis cannot separate the two.
+- The backtest scores team-level edges pooled over all plays. The frozen matchup findings are situation-level cells of 13 to 54 plays, where the signal is weaker still.
+
+## 8. What this project does not claim
 
 - It does not predict the score or the winner.
 - It does not say where Auburn has an edge on Florida. Under the frozen rules, no situation qualifies.
