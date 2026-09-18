@@ -2,34 +2,35 @@
 
 **Status:** draft for the author to review and publish. Nothing has been posted.
 **Rule it follows:** the frozen no-claims decision ([`go_no_go.md`](go_no_go.md)) and spec change log #14. The post makes no situational matchup claim. It explains what two games of data can and cannot separate.
-**Adapted from:** plan section 20 (title, one-sentence explanation, disclaimer).
+**Adapted from:** plan section 20 (title, one-sentence explanation, disclaimer), rebuilt around the supporting analysis in [`insights.md`](insights.md).
 
 ---
 
 ## Post
 
-**Looking for Auburn's offensive edge against Florida: what two games of data can (and can't) tell you**
+**What two games of college football data can (and can't) tell you**
 
-Auburn hosts Florida on Saturday. As an Auburn student, I went looking in the play-by-play for where Alex Golesh's offense might have an edge on Jon Sumrall's defense. The most useful thing I found was how little two games can tell you.
+I went looking for where Auburn's offense might have an edge on Florida's defense on Saturday. I didn't find one. What I found instead was a measurable answer to a better question: after two games, what can you actually know?
 
-Instead of predicting the final score, I built a league-wide baseline to find where Auburn's offense has created more value than expected, where Florida's defense has allowed more value than expected, and where those patterns overlap. Before I looked at a single Auburn or Florida result, I wrote down the rules for what would count as a finding.
+I built a league-wide baseline from 612,758 FBS snaps (2021–2026), measured every team against it, and tested how much a team's first two games really said about the rest of that same season.
 
-What I built:
-• 612,758 cleaned FBS snaps from 2021–2026, using predicted points added (PPA) and 20+ yard plays as the measures
-• Pre-snap baseline models, tested once on the 2025 season before being used
-• A reliability test on 664 past team-seasons: how much should two games really count?
-• Up to 10 robustness checks per finding, including dropping each game and removing the single most influential play
+What two games CAN tell you: identity.
+• After two games, the best estimate of a team's pass rate is 59% its own number and 41% league average. Its own number is worth as much as the league average after just 1.4 games.
+• Auburn's: 48.5% pass overall, 42.6% on standard downs, right at league-median balance. That is a real fact about this offense.
 
-What the data said:
-1. Two games are mostly noise. A team's first two games in a situation barely predicted the rest of its season (correlations of 0.24 or less). The best prediction put only 2–11% of the weight on those two games and the rest on the league average.
-2. I tested 4 broad situations, 2 ways each. None of the 8 findings showed a clear signal. The only one leaning Auburn's way disappeared when I removed one 12-yard run.
-3. The patterns that held up under every check were tiny: about a hundredth of a point per play, or a quarter of a percentage point in explosive-play rate.
+What two games CAN'T tell you: quality.
+• Explosive-play rate needs about 10 games to clear that same bar. Opponent-adjusted efficiency needs 11, adjusted explosiveness 17. After two games those estimates are still 83–89% league average.
+• Right now, 124 of 138 FBS offenses could still be a top-25 offense. Auburn's own range runs from 24th to 136th. Panic and hype are equally unsupported.
+• One play moves the median team's two-game average by 0.045 points per play, more than three times the largest edge I could find in this matchup.
 
-So my own rules say no pregame matchup claims, and I'm sticking to them. That was the hardest part. When you're rooting for a result, it's tempting to find one. The honest answer after two games is "not enough information yet," and saying that clearly is part of doing analytics well.
+The part that surprised me:
+Two-game splits taken at face value are worse than no information at all. Tested across five seasons, they predicted the rest of the season 75% worse than simply assuming every team is league average. Shrink them toward that average and they beat it by 9%. The September stat line isn't just noisy, it's actively misleading.
 
-One more thing I'm glad I checked: a final code review caught a bug. Bowl games were being counted as early-season games. Fixing it changed the reliability numbers but not the conclusion, and the fix is documented in the repo.
+And the matchup? Across all 18,906 FBS offense–defense pairings this season, Auburn–Florida's biggest situational edge is smaller than 72% of them. My rules, written down before I looked at a single Auburn or Florida result, said that meant no pregame claims. So I'm making none.
 
-The code, frozen data manifest, decision memo, and limitations are on GitHub: https://github.com/davideisenhauer/auburn-florida-offensive-edge
+Rooting for a result makes it tempting to find one. Saying "two games can't tell you that" is part of the job.
+
+Code, frozen data manifest, decision memo, and limitations: https://github.com/davideisenhauer/auburn-florida-offensive-edge
 
 This is an independent analysis using public play-by-play data. It is not affiliated with Auburn Athletics or Florida Athletics, and it does not account for private film, personnel, injury, or play-call information. Data through Sept. 12, 2026.
 
@@ -43,18 +44,18 @@ War Eagle.
 
 | # | File | Alt text |
 |---|---|---|
-| 1 | `outputs/figures/v5_two_game_reliability.png` | Dot chart titled "Two games are mostly noise." For 16 situation types, the weight a team's first two games deserve in predicting the rest of its season ranges from 2% to 11%, far below 100%. Correlations are 0.24 or less. |
-| 2 | `outputs/figures/v4_opportunity_map.png` | Scatter plot titled "Auburn offense vs. Florida defense: no clear signal." Four situations plotted by PPA edge and explosive-play edge, all clustered near zero with 90% intervals. Seven of eight intervals include zero. |
-| 3 | `outputs/figures/v1_auburn_offense_ppa.png` | Heatmap of Auburn's 2026 offense, PPA over expected by down, distance, and run or pass. Most cells are hidden for having fewer than 8 plays; shown values after shrinkage range from −0.017 to +0.004 per play. |
-| 4 | `outputs/figures/v2_florida_defense_ppa.png` | Heatmap of Florida's 2026 defense, PPA allowed over expected, same layout. Shown values after shrinkage range from −0.004 to +0.002 per play. |
-| 5 | `outputs/figures/v3_explosive_plays.png` | Dot chart of explosive-play rates, observed vs. expected, for Auburn's offense and Florida's defense in four situations, with play counts and shrunk differences. |
+| 1 | `outputs/figures/v6_reliability_spectrum.png` | Bar chart titled "What two games can and can't tell you about an offense." Pass rate needs 1.4 games to be worth as much as the league average; success rate and PPA per play need 6.4; explosive-play rate 10.1; PPA over expected 10.7; explosive rate over expected 17.0. |
+| 2 | `outputs/figures/v7_rank_intervals.png` | Every FBS offense's plausible national rank range after two games. The median line covers 118 of 138 places, 124 of 138 offenses could still be top 25, and Auburn's range runs from 24th to 136th around an estimate of 126th. |
+| 3 | `outputs/figures/v8_pairing_distribution.png` | Histogram of the largest situational PPA edge for all 18,906 FBS offense–defense pairings. The median pairing is 0.017 and Auburn–Florida is 0.013, smaller than 72% of pairings. |
+| 4 | `outputs/figures/v4_opportunity_map.png` | Scatter plot titled "Auburn offense vs. Florida defense: no clear signal." Four situations plotted by PPA edge and explosive-play edge, all near zero, seven of eight 90% intervals including zero. |
+| 5 | `outputs/figures/v1_auburn_offense_ppa.png` | Heatmap of Auburn's 2026 offense, PPA over expected by down, distance, and run or pass. Most cells are hidden for having fewer than 8 plays; shown values after shrinkage run from −0.017 to +0.004 per play. |
 
-LinkedIn crops single images in the feed. With five images, the first two appear largest, so lead with V5 and V4. To post fewer, keep V5 and V4 and leave the rest in the repo.
+LinkedIn shows the first two images largest, so lead with V6 and V7. To post fewer, keep V6 and V7 and leave the rest in the repo. V2, V3, and V5 stay in the repository as supporting detail.
 
 ## Before posting
 
 - [ ] Open the repository link in a private window to confirm it is public.
-- [ ] Optional: cut the bug-fix paragraph if the post feels long. It is accurate, and it shows the checking process.
+- [ ] Optional: add a line about the bug caught in final review (bowl games counted as early-season games). It is accurate and shows the checking process, but the post is already long.
 - [ ] Add your personal branding line, if you want one. It can also go in `BYLINE` in `src/visuals.py`, followed by a rerun of `python -m src.visuals`.
 - [ ] Post after the final figures are regenerated. Don't edit numbers by hand.
 - [ ] In comments, keep to the same rule. If someone asks where Auburn should attack, the honest answer is that two games of public play-by-play can't separate that from noise.

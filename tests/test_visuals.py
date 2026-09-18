@@ -17,8 +17,10 @@ from matplotlib.colors import to_hex, to_rgb
 
 from src import config
 
-NAMES = ["v1_auburn_offense_ppa", "v2_florida_defense_ppa", "v3_explosive_plays", "v4_opportunity_map", "v5_two_game_reliability"]
-SOURCES = ["team_cells_fine", "team_cells_rollup", "matchup_findings", "shrinkage_k"]
+NAMES = ["v1_auburn_offense_ppa", "v2_florida_defense_ppa", "v3_explosive_plays", "v4_opportunity_map", "v5_two_game_reliability",
+         "v6_reliability_spectrum", "v7_rank_intervals", "v8_pairing_distribution"]
+SOURCES = ["team_cells_fine", "team_cells_rollup", "matchup_findings", "shrinkage_k",
+           "insight_reliability", "insight_rank_intervals", "insight_pairings"]
 FINE_KEYS = ["play_family", "down_bin", "distance_bin"]
 HEATMAPS = [("v1_auburn_offense_ppa", "Auburn", "offense"), ("v2_florida_defense_ppa", "Florida", "defense")]
 RECOMMENDATION = re.compile(
@@ -240,6 +242,53 @@ def test_reliability_panel_matches_shrinkage_k(tables, saved):
     for r in m.itertuples():
         assert abs(number(r.weight_text) - r.weight_pct) <= 0.5 + 1e-9
         assert abs(number(r.correlation_text) - r.early_late_correlation) <= 0.005 + 1e-9
+
+
+# ---------------------------------------------------------------- V6, V7, V8: the supporting analysis
+
+def test_reliability_spectrum_matches_insight_table(tables, saved):
+    d = saved["v6_reliability_spectrum"]
+    source = tables["insight_reliability"]
+    m = d.merge(source[source.side == "offense"], on=["side", "measure"], how="left", suffixes=("", "_src"), validate="one_to_one")
+    assert len(m) == len(source[source.side == "offense"]) and (m.family == m.family_src).all()
+    assert close(m.k_plays, m.k_plays_src) and close(m.early_late_correlation, m.early_late_correlation_src)
+    assert close(m.games_to_half_weight, m.k_plays / m.plays_per_game)          # k plays = half weight, by definition
+    assert close(m.weight_after_two_games, m.median_early_plays / (m.median_early_plays + m.k_plays))
+    assert (m.games_to_half_weight > 0).all() and m.games_to_half_weight.is_monotonic_increasing  # drawn in order
+    for r in m.itertuples():
+        assert abs(number(r.games_text) - r.games_to_half_weight) <= 0.05 + 1e-9
+        assert abs(number(r.weight_text) - r.weight_after_two_games * 100) <= 0.5 + 1e-9
+        assert abs(number(r.correlation_text) - r.early_late_correlation) <= 0.005 + 1e-9
+    identity = m[m.family == "identity"].games_to_half_weight.max()
+    adjusted = m[m.family == "adjusted"].games_to_half_weight.min()
+    assert identity < adjusted, "play-calling must settle sooner than adjusted efficiency"
+
+
+def test_rank_intervals_match_insight_table(tables, saved):
+    d = saved["v7_rank_intervals"]
+    m = d.merge(tables["insight_rank_intervals"], on="team", how="left", suffixes=("", "_src"), validate="one_to_one")
+    assert len(m) == len(tables["insight_rank_intervals"])
+    for column in ("plays", "rank_estimate", "rank_low_90", "rank_high_90"):
+        assert (m[column] == m[f"{column}_src"]).all(), column
+    assert close(m.shrunk_ppa_over_expected, m.shrunk_ppa_over_expected_src)
+    teams = len(m)
+    assert (m.rank_low_90 >= 1).all() and (m.rank_high_90 <= teams).all() and (m.rank_low_90 <= m.rank_high_90).all()
+    assert close(m.rank_interval_width, m.rank_high_90 - m.rank_low_90 + 1)
+    assert (m.could_be_top_25 == (m.rank_low_90 <= 25)).all()
+    assert (m.shrunk_ppa_over_expected.abs() <= m.raw_ppa_over_expected.abs() + 1e-12).all()  # shrunk toward the league
+    assert m.rank_estimate.is_monotonic_increasing  # drawn best first
+
+
+def test_pairing_distribution_matches_the_frozen_findings(tables, saved):
+    d = saved["v8_pairing_distribution"]
+    cells = d[d.play_family != "any"]
+    m = cells.merge(tables["matchup_findings"], on=["metric", "play_family", "down_group"], how="left", validate="one_to_one")
+    assert len(m) == 8
+    assert close(m.auburn_florida_edge, m.edge), "the pairing edge must reproduce the frozen finding"
+    assert (d.auburn_florida_abs_percentile.between(0, 100)).all()
+    assert (d.median_abs_edge <= d.p90_abs_edge).all() and (d.p90_abs_edge <= d.largest_abs_edge).all()
+    summary = d[(d.metric == "value") & (d.play_family == "any")].iloc[0]
+    assert summary.pairings > 10_000 and abs(summary.auburn_florida_edge) <= summary.largest_abs_edge
 
 
 # ---------------------------------------------------------------- rules for every figure

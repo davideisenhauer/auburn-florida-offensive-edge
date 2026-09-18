@@ -540,6 +540,159 @@ def build_v5():
     return fig, data
 
 
+# ---------------------------------------------------------------- V6: what two games can and cannot tell you
+
+RELIABILITY_FAMILIES = {"identity": "What the offense chooses to do", "efficiency": "How well it is going",
+                        "adjusted": "How well it is going, adjusted for opponent and situation"}
+SEASON_GAMES = 12
+
+
+def reliability_spectrum_data() -> pd.DataFrame:
+    d = read_table("insight_reliability.csv")
+    d = d[d.side == "offense"].copy()
+    d["family_label"] = d.family.map(RELIABILITY_FAMILIES)
+    d = d.sort_values("games_to_half_weight").reset_index(drop=True)
+    d["games_text"] = d.games_to_half_weight.map(lambda g: f"{g:.1f} games")
+    d["weight_text"] = (d.weight_after_two_games * 100).map(lambda w: f"{w:.0f}%")
+    d["correlation_text"] = d.early_late_correlation.map(lambda c: f"{c:.2f}".replace("-", MINUS))
+    return d[["side", "measure", "family", "family_label", "team_seasons", "median_early_plays", "plays_per_game",
+              "k_plays", "weight_after_two_games", "games_to_half_weight", "early_late_correlation",
+              "games_text", "weight_text", "correlation_text"]]
+
+
+def build_v6():
+    data = reliability_spectrum_data()
+    with plt.rc_context(STYLE):
+        fig = plt.figure(figsize=(FIG_WIDTH, 9.0))
+        frame(fig, "What two games can and can't tell you about an offense",
+              ["FBS offenses, 2021\u20132025. For each measure: how many games it takes before a team's own number deserves as much weight as the",
+               "league average, learned by testing how well each team's early-season number predicted the rest of that same season.",
+               "Play-calling settles almost immediately. How well it is going takes most of a season, and longer once opponent and situation are removed."],
+              "insight_reliability.csv")
+        ax = fig.add_axes(axes_rect(fig, 3.55, 2.95, 4.5, 4.3))
+        limit = max(18.0, float(data.games_to_half_weight.max()) * 1.05)
+        ax.set_xlim(0, limit)
+        ax.set_ylim(len(data) - 0.5, -0.5)
+        ax.set_xticks([0, 2, 4, 6, 8, 10, 12, 14, 16, 18])
+        ax.set_yticks([])
+        ax.grid(axis="x", color=GRID, linewidth=1)
+        ax.set_axisbelow(True)
+        ax.tick_params(labelsize=10.5)
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        label_x = blended_transform_factory(ax.transAxes, ax.transData)
+        for i, r in data.iterrows():
+            ax.plot([0, r.games_to_half_weight], [i, i], color=INK_2, linewidth=7, solid_capstyle="butt", alpha=0.9, zorder=3)
+            ax.text(r.games_to_half_weight + limit * 0.012, i, r.games_text, fontsize=11, color=INK, va="center", zorder=5,
+                    bbox={"facecolor": SURFACE, "edgecolor": "none", "pad": 1.5})
+            ax.text(-0.03, i, r.measure, transform=label_x, fontsize=11.5, color=INK, ha="right", va="center")
+            ax.text(1.30, i, r.weight_text, transform=label_x, fontsize=11, color=INK_2, ha="center", va="center")
+            ax.text(1.52, i, r.correlation_text, transform=label_x, fontsize=11, color=INK_2, ha="center", va="center")
+        identity_rows = int((data.family == "identity").sum())
+        if 0 < identity_rows < len(data):
+            ax.axhline(identity_rows - 0.5, color=GRID, linewidth=1, zorder=1)
+        for x, label in ((2, "two games in"), (SEASON_GAMES, "a full regular season")):
+            ax.axvline(x, color=INK_2, linewidth=1.2, zorder=2)
+            ax.text(x, -0.85, label, fontsize=10.5, color=INK_2, ha="center", va="bottom")
+        ax.text(0.5, -1.45, "Games needed before a team's own number is worth as much as the league average",
+                transform=ax.transAxes, fontsize=11.5, color=INK, ha="center", va="bottom")
+        header_y = -1.45
+        ax.text(1.30, header_y, "Weight after\ntwo games", transform=label_x, fontsize=10.5, color=INK, ha="center", va="bottom")
+        ax.text(1.52, header_y, "Early vs. rest\nof season", transform=label_x, fontsize=10.5, color=INK, ha="center", va="bottom")
+    return fig, data
+
+
+# ---------------------------------------------------------------- V7: two games cannot rank an offense
+
+def rank_interval_data() -> pd.DataFrame:
+    d = read_table("insight_rank_intervals.csv").sort_values("rank_estimate").reset_index(drop=True)
+    d["could_be_top_25"] = d.rank_low_90 <= 25
+    d["interval_text"] = [f"{int(lo)}th to {int(hi)}th" for lo, hi in zip(d.rank_low_90, d.rank_high_90)]
+    return d
+
+
+def build_v7():
+    data = rank_interval_data()
+    teams = len(data)
+    auburn = data[data.team == config.OFFENSE_TEAM].iloc[0]
+    with plt.rc_context(STYLE):
+        fig = plt.figure(figsize=(FIG_WIDTH, 9.4))
+        frame(fig, "Two games cannot rank an offense",
+              [f"Every FBS offense, 2026 through the cutoff. Each line is the range of national ranks consistent with that team's two games,",
+               f"after adjusting for opponent, situation, and point spread, and after discounting for how little two games settle.",
+               f"The median line covers {data.rank_interval_width.median():.0f} of {teams} places. Teams are ordered by their two-game estimate, best at the top."],
+              "insight_rank_intervals.csv")
+        ax = fig.add_axes(axes_rect(fig, 1.5, 2.7, 7.1, 5.6))
+        ax.set_xlim(0.5, teams + 0.5)
+        ax.set_ylim(teams + 0.5, -0.5)
+        ax.set_xticks([1, 25, 50, 75, 100, 125, teams], ["1st", "25th", "50th", "75th", "100th", "125th", f"{teams}th"])
+        ax.set_yticks([])
+        ax.grid(axis="x", color=GRID, linewidth=1)
+        ax.set_axisbelow(True)
+        ax.tick_params(labelsize=10.5)
+        ax.xaxis.tick_top()
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        for i, r in data.iterrows():
+            is_auburn = r.team == config.OFFENSE_TEAM
+            ax.plot([r.rank_low_90, r.rank_high_90], [i, i], color=INK if is_auburn else MUTED,
+                    linewidth=2.6 if is_auburn else 1.1, alpha=1.0 if is_auburn else 0.55,
+                    solid_capstyle="round", zorder=4 if is_auburn else 2)
+            ax.scatter([r.rank_estimate], [i], s=26 if is_auburn else 4, color=INK if is_auburn else MUTED,
+                       zorder=5 if is_auburn else 3, linewidths=0)
+        ax.annotate(f"{config.OFFENSE_TEAM}: two games say {int(auburn.rank_estimate)}th,\nbut the data supports {auburn.interval_text}",
+                    (100, data.index[data.team == config.OFFENSE_TEAM][0]), xytext=(0.34, 0.80),
+                    textcoords="axes fraction", fontsize=11, fontweight="bold", color=INK, ha="left", va="center",
+                    linespacing=1.35, zorder=6, gid="annotation", bbox={"facecolor": SURFACE, "edgecolor": "none", "pad": 4},
+                    arrowprops={"arrowstyle": "-|>", "color": INK_2, "linewidth": 1, "shrinkA": 6, "shrinkB": 4, "mutation_scale": 10})
+        ax.text(0.02, 0.06, f"{int(data.could_be_top_25.sum())} of {teams} offenses could still be a top-25 offense.",
+                transform=ax.transAxes, fontsize=11, fontweight="bold", color=INK, ha="left", va="center", gid="annotation",
+                bbox={"facecolor": SURFACE, "edgecolor": "none", "pad": 4})
+        ax.set_xlabel("National rank in PPA over expected, 2026 through the cutoff", fontsize=11.5, labelpad=10)
+        ax.xaxis.set_label_position("top")
+    return fig, data
+
+
+# ---------------------------------------------------------------- V8: every FBS pairing, not just this one
+
+def pairing_data() -> pd.DataFrame:
+    return read_table("insight_pairings.csv")
+
+
+def build_v8():
+    summary = pairing_data()
+    row = summary[(summary.metric == "value") & (summary.play_family == "any")].iloc[0]
+    pairs = pd.read_csv(config.TABLES_DIR / "insight_pairings_value.csv")
+    with plt.rc_context(STYLE):
+        fig = plt.figure(figsize=(FIG_WIDTH, 7.6))
+        frame(fig, "The edge in this matchup is an ordinary one",
+              [f"Every 2026 FBS offense paired with every 2026 FBS defense ({int(row.pairings):,} pairings), scored with the same method as Auburn\u2013Florida:",
+               "the largest PPA edge either way across the four situations, after shrinking each team's two games toward the league average.",
+               f"Auburn\u2013Florida's largest edge is smaller than {100 - row.auburn_florida_abs_percentile:.0f}% of them."],
+              "insight_pairings.csv")
+        ax = fig.add_axes(axes_rect(fig, 1.3, 2.6, 8.0, 3.3))
+        ax.hist(pairs.largest_abs_edge, bins=60, color=MUTED, alpha=0.55, zorder=2)
+        ax.set_xlim(0, float(pairs.largest_abs_edge.max()) * 1.02)
+        ax.set_yticks([])
+        ax.grid(axis="x", color=GRID, linewidth=1)
+        ax.set_axisbelow(True)
+        ax.tick_params(labelsize=10.5)
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        top = ax.get_ylim()[1]
+        matchup_edge = abs(row.auburn_florida_edge)
+        for value, label, color, weight in ((row.median_abs_edge, f"Median pairing\n{row.median_abs_edge:.3f}", INK_2, "normal"),
+                                            (matchup_edge, f"Auburn\u2013Florida\n{matchup_edge:.3f}", INK, "bold")):
+            side = "right" if value <= matchup_edge else "left"  # keep the two labels apart
+            pad = -1 if side == "right" else 1
+            ax.axvline(value, color=color, linewidth=2, zorder=4)
+            ax.text(value + pad * float(pairs.largest_abs_edge.max()) * 0.006, top * 0.97, label, fontsize=11, color=color,
+                    fontweight=weight, ha=side, va="top", linespacing=1.35, zorder=5, gid="annotation",
+                    bbox={"facecolor": SURFACE, "edgecolor": "none", "pad": 2})
+        ax.set_xlabel("Largest PPA edge per play in any of the four situations, either direction", fontsize=11.5, labelpad=10)
+    return fig, summary
+
+
 # ---------------------------------------------------------------- main
 
 FIGURE_BUILDERS = {
@@ -548,6 +701,9 @@ FIGURE_BUILDERS = {
     "v3_explosive_plays": build_v3,
     "v4_opportunity_map": build_v4,
     "v5_two_game_reliability": build_v5,
+    "v6_reliability_spectrum": build_v6,
+    "v7_rank_intervals": build_v7,
+    "v8_pairing_distribution": build_v8,
 }
 
 

@@ -20,17 +20,23 @@ The pregame write-up is therefore about what two games of data can and cannot te
 
 ## Key results
 
-1. **Two games are mostly noise.** Across 664 FBS team-seasons from 2021 to 2025, a team's regular-season Weeks 1–2 result in a situation correlated with its rest-of-season result at 0.24 or less. At a typical two-game sample, the result deserves 2–11% weight; the rest should come from the league baseline.
-2. **No situation shows a clear signal.** All eight matchup findings (4 situations × PPA and explosive plays) carry the frozen label "no clear signal." The only edge leaning Auburn's way, +0.001 PPA per play on 15 and 13 plays, flips if one 12-yard run is removed.
-3. **What held up is tiny.** The three findings that keep their direction under every robustness check are each within 0.013 PPA per play, or 0.26 percentage points of explosive-play rate, of zero.
+**The matchup question.** All eight findings (4 situations × PPA and explosive plays) carry the frozen label "no clear signal." The only edge leaning Auburn's way, +0.001 PPA per play on 15 and 13 plays, flips if one 12-yard run is removed. The three findings that survive every robustness check are each within 0.013 PPA per play, or 0.26 percentage points of explosive-play rate, of zero.
+
+**What two games can and cannot establish** ([`docs/insights.md`](docs/insights.md)), measured on 2021–2025 FBS team-seasons:
+
+1. **Play-calling settles almost immediately; quality does not.** After two games, the best estimate of a team's pass rate is 59% its own number and 41% league average; its own number carries equal weight after 1.4 games. Opponent-adjusted efficiency needs about 11 games to reach that bar, and adjusted explosiveness 17. Defenses take longer than offenses.
+2. **Two games cannot rank a team.** The median FBS offense's 90% rank interval covers 118 of 138 places, and 124 of 138 offenses could still be top-25. Auburn's own range is 24th to 136th, so neither panic nor optimism is supported.
+3. **Face-value splits are worse than no information.** Leave-one-season-out, unshrunk two-game numbers predict the rest of the season 75% worse than assuming every team is league average. Shrunk, they beat it by 9%.
+4. **This matchup is unremarkable.** Across all 18,906 FBS offense–defense pairings this season, Auburn–Florida's largest situational edge is smaller than 72% of them.
 
 ## Figures
 
 | | |
 |---|---|
-| **Two games are mostly noise** (V5) ![Weight a two-game result deserves, by situation](outputs/figures/v5_two_game_reliability.png) | **All eight findings: no clear signal** (V4) ![Matchup map of PPA edge and explosive-play edge](outputs/figures/v4_opportunity_map.png) |
+| **What two games can and can't tell you** (V6) ![Games needed before a measure is worth as much as the league average](outputs/figures/v6_reliability_spectrum.png) | **Two games cannot rank an offense** (V7) ![Plausible national rank ranges for every FBS offense](outputs/figures/v7_rank_intervals.png) |
+| **The edge here is an ordinary one** (V8) ![Distribution of the largest edge across all FBS pairings](outputs/figures/v8_pairing_distribution.png) | **All eight findings: no clear signal** (V4) ![Matchup map of PPA edge and explosive-play edge](outputs/figures/v4_opportunity_map.png) |
 | **Auburn offense, PPA over expected** (V1) ![Auburn offense heatmap](outputs/figures/v1_auburn_offense_ppa.png) | **Florida defense, PPA allowed over expected** (V2) ![Florida defense heatmap](outputs/figures/v2_florida_defense_ppa.png) |
-| **Explosive plays, observed vs. expected** (V3) ![Explosive-play rates](outputs/figures/v3_explosive_plays.png) | |
+| **Explosive plays, observed vs. expected** (V3) ![Explosive-play rates](outputs/figures/v3_explosive_plays.png) | **Shrinkage by situation** (V5) ![Weight a two-game result deserves, by situation](outputs/figures/v5_two_game_reliability.png) |
 
 Every figure uses the same color direction: **blue = better for Auburn** (Auburn's offense produced more, or Florida's defense allowed more), **red = worse**. Cells with fewer than 8 plays are blank, and 8–14 plays are labeled "limited sample." The numbers drawn on each figure are saved next to it as `outputs/figures/*_data.csv` and tested against the analysis tables.
 
@@ -53,7 +59,9 @@ All 58 raw files are frozen and hashed in [`data/data_manifest.csv`](data/data_m
 5. **Shrink** each residual toward the league baseline by an amount learned from how well two early games predicted the rest of the season in 2021–2025.
 6. **Edge** = average of Auburn's and Florida's shrunk residuals. Each finding must survive up to 10 robustness checks, including each game left out, the most influential play removed, garbage time included, giveaways removed, and an XGBoost baseline.
 
-Full method: [`docs/methodology.md`](docs/methodology.md) · Model card: [`outputs/model_card.md`](outputs/model_card.md)
+7. **Supporting analysis**, added after the decision and logged as change log #16: how reliable each early-season measure is, whether adjusting beats raw, rank intervals for every FBS offense, and the same edge computed for every FBS pairing.
+
+Full method: [`docs/methodology.md`](docs/methodology.md) · What two games can and cannot tell you: [`docs/insights.md`](docs/insights.md) · Model card: [`outputs/model_card.md`](outputs/model_card.md)
 
 ## Limitations
 
@@ -79,6 +87,7 @@ cp .env.example .env                  # add a free CollegeFootballData API key (
 .venv/bin/python -m src.reconcile     # four 2026 games vs. CFBD and official box scores
 .venv/bin/python -m src.models        # baselines, 2025 test, 2026 environment check
 .venv/bin/python -m src.matchup       # team profiles, shrinkage, findings, go/no-go
+.venv/bin/python -m src.insights      # league-wide reliability, ranks, and pairings (supporting)
 .venv/bin/python -m src.visuals       # figures and the numbers behind them
 .venv/bin/python -m pytest
 ```
@@ -87,7 +96,7 @@ Then run `notebooks/01_data_audit.ipynb`, `02_baseline_models.ipynb`, and `03_ma
 
 Raw data is not committed, so a fresh clone downloads all 58 raw files. If any source has changed since the September 16, 2026 snapshot, `src.ingest` stops with a hash mismatch instead of silently using different data.
 
-**Verified September 18, 2026:** a fresh Python 3.12 environment was built from `requirements.txt` and used only the frozen raw files. After the correction below, the full pipeline ran end to end in it in about 4 minutes, all 115 tests passed, and the three notebooks executed without errors. The rerun reproduced byte for byte every table in `outputs/tables/`, the fitted models, the cleaned and scored play files, the figure data, and the figure PNGs. The notebook outputs matched the saved notebooks cell for cell.
+**Verified September 18, 2026:** a fresh Python 3.12 environment was built from `requirements.txt` and used only the frozen raw files. After the correction below, the full pipeline ran end to end in it in about 4 minutes, all 126 tests passed, and the three notebooks executed without errors. The rerun reproduced all 45 outputs byte for byte: every table in `outputs/tables/`, the fitted models, the cleaned and scored play files, the figure data, and the figure PNGs. The notebook outputs matched the saved notebooks cell for cell.
 
 ## Corrections
 
@@ -107,6 +116,7 @@ Raw data is not committed, so a fresh clone downloads all 58 raw files. If any s
 │   ├── analysis_spec.md         frozen rules and change log (binding)
 │   ├── data_sources.md
 │   ├── go_no_go.md              Thursday decision memo
+│   ├── insights.md              what two games can and cannot tell you
 │   ├── methodology.md
 │   ├── limitations.md
 │   └── linkedin_post.md
@@ -116,8 +126,8 @@ Raw data is not committed, so a fresh clone downloads all 58 raw files. If any s
 │   ├── models/                  fitted baselines and model_selection.json
 │   ├── tables/                  every analysis table
 │   └── model_card.md
-├── src/                         config, ingest, clean, reconcile, features, models, matchup, visuals
-└── tests/                       cleaning, features, leakage, matchup, visuals
+├── src/                         config, ingest, clean, reconcile, features, models, matchup, insights, visuals
+└── tests/                       cleaning, features, leakage, matchup, insights, visuals
 ```
 
 The original project plan is kept in `Auburn_vs_Florida_Offensive_Edge_Project_Plan.md`. Where it differs from the spec, the spec wins.

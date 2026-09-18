@@ -1,0 +1,13 @@
+target,input,treatment,team_seasons,weighted_rmse,correlation_with_actual,rmse_improvement_vs_league_average
+rest-of-season PPA per play,raw two-game PPA per play,league average (no team data),664,0.09171754280120879,,0.0
+rest-of-season PPA per play,raw two-game PPA per play,as measured,664,0.1605507943429775,0.4259920720787368,-0.7504916664738812
+rest-of-season PPA per play,raw two-game PPA per play,shrunk,664,0.08335121409281634,0.4195279423033705,0.0912184131069218
+rest-of-season PPA per play,adjusted two-game PPA over expected,league average (no team data),664,0.09171754280120879,,0.0
+rest-of-season PPA per play,adjusted two-game PPA over expected,as measured,664,0.14824628900125755,0.3789430910899519,-0.6163351576325018
+rest-of-season PPA per play,adjusted two-game PPA over expected,shrunk,664,0.08571117980937605,0.3634521014020378,0.06548761347489551
+rest-of-season PPA over expected,raw two-game PPA per play,league average (no team data),664,0.07670413975324936,,0.0
+rest-of-season PPA over expected,raw two-game PPA per play,as measured,664,0.1729078379311538,0.26243719414143185,-1.2542178099824013
+rest-of-season PPA over expected,raw two-game PPA per play,shrunk,664,0.07413480353309759,0.2564927642054559,0.03349670863159537
+rest-of-season PPA over expected,adjusted two-game PPA over expected,league average (no team data),664,0.07670413975324936,,0.0
+rest-of-season PPA over expected,adjusted two-game PPA over expected,as measured,664,0.1504752613893935,0.3156803991706536,-0.9617619319303952
+rest-of-season PPA over expected,adjusted two-game PPA over expected,shrunk,664,0.07304491134909864,0.30875399849525503,0.047705748554408345

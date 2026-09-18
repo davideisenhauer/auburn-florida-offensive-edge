@@ -1,0 +1,11 @@
+side,measure,family,family_label,team_seasons,median_early_plays,plays_per_game,k_plays,weight_after_two_games,games_to_half_weight,early_late_correlation,games_text,weight_text,correlation_text
+offense,Pass rate,identity,What the offense chooses to do,664,112.0,55.5,79.43,0.5850702606696965,1.4311711711711712,0.6990698154758985,1.4 games,59%,0.70
+offense,"Pass rate, standard downs",identity,What the offense chooses to do,664,78.5,39.0,59.57,0.5685521836749475,1.5274358974358977,0.6755485748952967,1.5 games,57%,0.68
+offense,"Pass rate, passing downs",identity,What the offense chooses to do,664,34.5,17.0,42.17,0.4499804356332333,2.4805882352941175,0.5896534284076835,2.5 games,45%,0.59
+offense,Sack rate allowed,efficiency,How well it is going,664,56.0,27.5,167.88,0.2501340003573343,6.104727272727272,0.3763857030567473,6.1 games,25%,0.38
+offense,Success rate,efficiency,How well it is going,664,112.0,55.5,354.81,0.2399263083481502,6.392972972972973,0.4123301125187353,6.4 games,24%,0.41
+offense,PPA per play,efficiency,How well it is going,664,112.0,55.5,354.81,0.2399263083481502,6.392972972972973,0.4259920720787368,6.4 games,24%,0.43
+offense,Yards per play,efficiency,How well it is going,664,112.0,55.5,398.11,0.2195604869537942,7.173153153153153,0.3956186933322717,7.2 games,22%,0.40
+offense,Explosive-play rate (20+ yards),efficiency,How well it is going,664,112.0,55.5,562.34,0.1660883233976925,10.132252252252252,0.3209306856767528,10.1 games,17%,0.32
+offense,PPA over expected,adjusted,"How well it is going, adjusted for opponent and situation",664,112.0,55.5,595.66,0.1582680948478082,10.732612612612613,0.3156803991706536,10.7 games,16%,0.32
+offense,Explosive rate over expected,adjusted,"How well it is going, adjusted for opponent and situation",664,112.0,55.5,944.06,0.1060545802321837,17.010090090090088,0.2223948727524221,17.0 games,11%,0.22

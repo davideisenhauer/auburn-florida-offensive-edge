@@ -148,4 +148,11 @@ On September 18, the project owner chose to publish a pregame post that makes no
 | V2 `v2_florida_defense_ppa.png` | Florida defense PPA allowed over expected, same layout and colors |
 | V3 `v3_explosive_plays.png` | Explosive-play rate, observed vs. expected, for both teams in the four main cells |
 | V4 `v4_opportunity_map.png` | All eight findings: PPA edge × explosive edge, 90% intervals, robustness styling |
-| V5 `v5_two_game_reliability.png` | How much weight two games deserve, from 2021–2025 FBS team-seasons |
+| V5 `v5_two_game_reliability.png` | How much weight two games deserve, by situation, from 2021–2025 FBS team-seasons |
+| V6 `v6_reliability_spectrum.png` | Games needed before each measure is worth as much as the league average |
+| V7 `v7_rank_intervals.png` | The range of national ranks consistent with each 2026 FBS offense's two games |
+| V8 `v8_pairing_distribution.png` | The largest situational edge for every 2026 FBS offense–defense pairing |
+
+## 10. Supporting analysis
+
+After the decision, `src/insights.py` added league-wide context: how reliable each early-season measure is, whether opponent- and situation-adjusted early numbers predict better than raw ones, empirical-Bayes rank intervals for every 2026 FBS offense, and the same matchup edge computed for all 18,906 FBS pairings. It reuses the frozen samples and shrinkage, adds no matchup finding, and reproduces the frozen Auburn–Florida edges exactly as a check. Results and caveats: [`insights.md`](insights.md); logged as change log #16.
